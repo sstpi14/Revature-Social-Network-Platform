@@ -4,4 +4,4 @@ Git Strategy:
 2. Create a diagram for how the application will work.
 3. 
 4. Create branches off of main to begin work on backend and frontend.
-4. 
+5.
