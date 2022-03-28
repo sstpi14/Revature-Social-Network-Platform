@@ -2,6 +2,7 @@ Git Strategy:
 
 1. Start with a basic template of the application.
 2. Create a diagram for how the application will work.
+<<<<<<< HEAD
 3. Create branches off of main to begin work on backend and frontend.
 
 
@@ -13,3 +14,8 @@ How to update your grou[ records]
 
 - git pull: update your records according to the remote repository
 
+=======
+3. 
+4. Create branches off of main to begin work on backend and frontend.
+4. 
+>>>>>>> 22412798ee3a4a786e8d3ecbacb14b275ba8365c
