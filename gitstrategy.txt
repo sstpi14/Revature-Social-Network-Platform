@@ -1,1 +1,5 @@
-GIT
+Git Strategy:
+
+1. Start with a basic template of the application.
+2. Create a diagram for how the application will work.
+3. Create branches off of main to begin work on backend and frontend.
