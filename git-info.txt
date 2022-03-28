@@ -2,4 +2,3 @@ Different sections of the applciation:
 - main
 - functionality branches
 - individual work branches (if more than one person is working on a single functionality)
-
