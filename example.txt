@@ -5,4 +5,3 @@ Hi, I am in the develop branch.
 Hi, I am in the feature/new-feature1 branch.
 HI, I am in the feature/new-feature2 branch.
 
-Hi, I am in the feature/new-feature4 branch.
