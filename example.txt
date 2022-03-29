@@ -1,3 +1,5 @@
 Hi, I am in the main branch.
 
 Hi, I am in the develop branch.
+
+HI, I am in the feature/new-feature2 branch.
