@@ -1,0 +1,13 @@
+ADDING NEW FEATURE:
+0. BE IN DEVELOP BRANCH
+1. git branch checkout -b (new feature branch name)
+2.  ~adding features into new feature branch~
+3. git add .
+4. git commit -m "(specifiy feature changes here)"
+5. git checkout develop
+6. git merge (new feature branch name)
+7. git pull
+8. ~fix merge conflict in VS Code~
+9. git commit -am "adding (feature name here)"
+10. git push
+DONE
