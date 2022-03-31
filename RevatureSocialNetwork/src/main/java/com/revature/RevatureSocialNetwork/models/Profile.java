@@ -19,6 +19,7 @@ public class Profile {
     private Blob img;
     private String email;
 
+    //register constructor
     public Profile(String username, String password, String first_name, String last_name, String email) {
         this.username = username;
         this.password = password;
