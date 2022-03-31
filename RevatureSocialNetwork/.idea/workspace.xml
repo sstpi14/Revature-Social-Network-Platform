@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec3dad36-735a-4397-81e3-bbe322ae75b1" name="Changes" comment="">
+    <list default="true" id="ec3dad36-735a-4397-81e3-bbe322ae75b1" name="Changes" comment="&quot;commit workspace.xml specific&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Display.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,5 +71,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;commit workspace.xml specific&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;commit workspace.xml specific&quot;" />
   </component>
 </project>

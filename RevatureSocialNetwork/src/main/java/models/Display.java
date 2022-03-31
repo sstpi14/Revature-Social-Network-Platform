@@ -14,7 +14,7 @@ public class Display {
     private Blob img;
     private Integer profileId;
     private Boolean liked;
-    private Integer numberOfLieckes;
+    private Integer numberOfLikes;
     private String description;
 
     public Display(Integer profileId) {
