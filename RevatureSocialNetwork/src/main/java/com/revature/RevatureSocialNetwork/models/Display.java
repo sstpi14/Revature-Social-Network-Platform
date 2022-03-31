@@ -1,4 +1,4 @@
-package models;
+package com.revature.RevatureSocialNetwork.models;
 
 import lombok.*;
 

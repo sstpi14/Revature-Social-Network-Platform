@@ -1,4 +1,4 @@
-package utilities;
+package com.revature.RevatureSocialNetwork.utilities;
 
 public class ConnectionUtility {
 }

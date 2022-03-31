@@ -1,4 +1,4 @@
-package repositories;
+package com.revature.RevatureSocialNetwork.repositories;
 
 public interface DisplayDAO {
 }
