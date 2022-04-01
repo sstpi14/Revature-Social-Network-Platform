@@ -19,7 +19,7 @@ public class ProfileController {
     }
 
     @PostMapping("Register")
-    public Profile createPorfile(@RequestBody Profile profile){
+    public Profile createProfile(@RequestBody Profile profile){
         return profileService.createOne(profile);
     }
 
