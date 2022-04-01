@@ -10,22 +10,22 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequestMapping(value = "session")
 public class SessionController {
+
     @PostMapping
     public ResponseEntity<Profile> login(HttpSession httpSession, @RequestBody Profile profile){
-        httpSession.setAttribute("videogame", profile);
+        httpSession.setAttribute("profile", profile);
         return ResponseEntity.status(HttpStatus.OK).body(profile);
     }
 
     @DeleteMapping
     public ResponseEntity<String> logout(HttpSession httpSession){
-        httpSession.setAttribute("videogame",null);
-        //httpSession.invalidate();
-        return ResponseEntity.status(HttpStatus.OK).body("Logged out and session invalidate");
+        httpSession.setAttribute("profile",null);
+        return ResponseEntity.status(HttpStatus.OK).body("Logged out and session invalidated");
     }
 
     @GetMapping
     public ResponseEntity<Profile> checkSession(HttpSession httpSession){
-        Profile profile = (Profile) httpSession.getAttribute("videogame");
+        Profile profile = (Profile) httpSession.getAttribute("profile");
 
         if (profile == null){
             return ResponseEntity.status(HttpStatus.OK).body(null);
