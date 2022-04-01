@@ -7,9 +7,7 @@ import java.sql.Blob;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 public class Profile {
     private Integer id;
     private String username;
