@@ -1,6 +1,7 @@
 package com.revature.EnergySocialNetwork.services;
 
 import com.revature.EnergySocialNetwork.models.Display;
+import com.revature.EnergySocialNetwork.models.Profile;
 import com.revature.EnergySocialNetwork.repositories.DisplayDAO;
 import com.revature.EnergySocialNetwork.repositories.ProfileDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,12 @@ public class DisplayService {
 
     public Display createDisplay(Display display) {
         Integer displayId = displayDAO.createDisplay(display);
+
         Display displayFromDb = displayDAO.getOne(displayId);
+
+        Profile profile = profileDAO.getOne(displayFromDb.getProfile().getProfileId());
+
+        displayFromDb.setProfile(profile);
 
         return displayFromDb;
     }
@@ -39,6 +45,7 @@ public class DisplayService {
     }
 
     public List<Display> getAllByProfileId(Integer profileId) {
+
         return displayDAO.getAllByProfileId(profileId);
     }
     

@@ -27,7 +27,7 @@ public class DisplayDAOImpl implements DisplayDAO{
     public List<Display> getAllByProfileId(Integer profileId) {
         Session session = em.unwrap(Session.class);
 
-        return session.createQuery("from Display where profileId = '" + profileId + "'", Display.class).getResultList();
+        return session.createQuery("from Display display where profile = '" + profileId + "'", Display.class).getResultList();
     }
 
     @Override
