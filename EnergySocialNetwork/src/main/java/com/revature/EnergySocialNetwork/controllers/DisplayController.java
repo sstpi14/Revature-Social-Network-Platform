@@ -40,14 +40,10 @@ public class DisplayController {
         return null;
     }
 
-
     //creating a display - works
     @PostMapping
     public Display createDisplay(@RequestBody Display display) {
         return displayService.createDisplay(display);
     }
-
-
-
 
 }

@@ -37,4 +37,5 @@ public class ProfileController {
     public List<Profile> getAllProfile(){
         return profileService.getAll();
     }
+
 }

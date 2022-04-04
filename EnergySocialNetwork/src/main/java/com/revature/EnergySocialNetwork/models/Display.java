@@ -3,9 +3,12 @@ package com.revature.EnergySocialNetwork.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,18 +22,15 @@ public class Display {
     private Integer displayId;
     @Column
     private Blob img;
-    @Column(nullable = false)
-    private Integer profileId;
+    @ManyToOne
+    private Profile profile;
+    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL) //this references the variable in the song class
+    private List<Like> likes = new ArrayList<>();
     @Column
-    private Boolean liked; // do we need this?
-    @Column
-    private Integer numOfLikes;
-    @Column (nullable = false)
     private String description;
 
     public Display(Integer displayId, Integer numOfLikes, String description) {
         this.displayId = displayId;
-        this.numOfLikes = numOfLikes;
         this.description = description;
     }
 }

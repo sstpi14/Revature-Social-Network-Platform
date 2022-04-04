@@ -2,6 +2,7 @@ package com.revature.EnergySocialNetwork.services;
 
 import com.revature.EnergySocialNetwork.models.Display;
 import com.revature.EnergySocialNetwork.repositories.DisplayDAO;
+import com.revature.EnergySocialNetwork.repositories.ProfileDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,15 @@ import java.util.List;
 @Transactional
 public class DisplayService {
 
-    @Autowired
     private DisplayDAO displayDAO;
+    private ProfileDAO profileDAO;
+
+    @Autowired
+    public DisplayService (DisplayDAO displayDAO, ProfileDAO profileDAO) {
+        this.displayDAO = displayDAO;
+        this.profileDAO = profileDAO;
+    }
+
 
     public Display createDisplay(Display display) {
         Integer displayId = displayDAO.createDisplay(display);
