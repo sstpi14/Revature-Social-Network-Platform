@@ -25,7 +25,12 @@ public class Display {
     private Boolean liked; // do we need this?
     @Column
     private Integer numOfLikes;
-    @Column
+    @Column (nullable = false)
     private String description;
 
+    public Display(Integer displayId, Integer numOfLikes, String description) {
+        this.displayId = displayId;
+        this.numOfLikes = numOfLikes;
+        this.description = description;
+    }
 }
