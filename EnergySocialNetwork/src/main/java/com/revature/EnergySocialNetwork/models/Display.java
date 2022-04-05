@@ -32,5 +32,7 @@ public class Display {
     public Display(Integer displayId, Integer numOfLikes, String description) {
         this.displayId = displayId;
         this.description = description;
+        int num = 2;
+
     }
 }
