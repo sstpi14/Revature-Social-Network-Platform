@@ -25,8 +25,15 @@ public class Display {
     private Blob img;
     @ManyToOne
     private Profile profile;
-    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL) //this references the variable in the song class
-    private List<Like> likes = new ArrayList<>();
+//    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL) //this references the variable in the song class
+//    private List<Like> likes = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "Likes",
+            joinColumns = @JoinColumn(name = "display_id"),
+            inverseJoinColumns = @JoinColumn(name = "profile_id")
+    )
+    List<Profile> likers =new ArrayList<>();
     @Column
     private String description;
 

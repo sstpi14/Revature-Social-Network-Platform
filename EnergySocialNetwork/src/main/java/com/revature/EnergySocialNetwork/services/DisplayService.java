@@ -80,4 +80,32 @@ public class DisplayService {
         displayDAO.deleteDisplay(getOneByDisplayId(displayId));
     }
 
+    public Display addToLike(Integer profileId,Integer displayId){
+        Display display = displayDAO.getOne(displayId);
+
+        Profile profile = profileDAO.getOne(profileId);
+
+        List<Profile> profileThatHaveLiked = display.getLikers();
+
+        for (int i = 0; i<profileThatHaveLiked.size();i++){
+            if (profileThatHaveLiked.get(i).equals(profile)){
+                return null;
+            }
+        }
+
+        profileThatHaveLiked.add(profile);
+
+        display.setLikers(profileThatHaveLiked);
+
+        return display;
+    }
+
+    public List<Profile> getAllLikers(Integer displayId){
+        Display display = displayDAO.getOne(displayId);
+
+        List<Profile> Likers = display.getLikers();
+
+        return Likers;
+    }
+
 }

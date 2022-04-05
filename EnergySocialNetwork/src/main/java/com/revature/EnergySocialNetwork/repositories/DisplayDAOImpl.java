@@ -1,6 +1,7 @@
 package com.revature.EnergySocialNetwork.repositories;
 
 import com.revature.EnergySocialNetwork.models.Display;
+import com.revature.EnergySocialNetwork.models.Profile;
 import org.hibernate.Session;
 import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Repository;
@@ -73,5 +74,12 @@ public class DisplayDAOImpl implements DisplayDAO{
 
         session.delete(display);
 
+    }
+
+    @Override
+    public void addProfileToLike(Profile profile) {
+        Session session = em.unwrap(Session.class);
+
+        session.update(profile);
     }
 }
