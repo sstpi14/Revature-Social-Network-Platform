@@ -1,6 +1,8 @@
 package com.revature.EnergySocialNetwork.controllers;
 
 import com.revature.EnergySocialNetwork.models.Profile;
+import com.revature.EnergySocialNetwork.services.ProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,13 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequestMapping(value = "session")
 public class SessionController {
+
+    private ProfileService profileService;
+
+    @Autowired
+    public SessionController(ProfileService profileService) {
+        this.profileService = profileService;
+    }
 
     @PostMapping
     public ResponseEntity<Profile> login(HttpSession httpSession, @RequestBody Profile profile){

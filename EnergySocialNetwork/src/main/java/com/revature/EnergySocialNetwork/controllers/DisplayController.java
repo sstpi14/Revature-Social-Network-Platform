@@ -12,8 +12,12 @@ import java.util.List;
 @RequestMapping("display")
 public class DisplayController {
 
-    @Autowired
     private DisplayService displayService;
+
+    @Autowired
+    public DisplayController(DisplayService displayService) {
+        this.displayService = displayService;
+    }
 
     //get all displays (most likely going to use this for home feed) - works
     @GetMapping

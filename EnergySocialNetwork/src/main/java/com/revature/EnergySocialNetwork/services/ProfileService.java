@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class ProfileService {
 
-    @Autowired
     private ProfileDAO profileDAO;
+
+    @Autowired
+    public ProfileService(ProfileDAO profileDAO) {
+        this.profileDAO = profileDAO;
+    }
 
     public Profile createOne(Profile profile) {
         Integer profileId = profileDAO.createProfile(profile);

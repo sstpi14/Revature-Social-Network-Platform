@@ -10,8 +10,13 @@ import java.util.List;
 @RestController
 @RequestMapping("profile")
 public class ProfileController {
-    @Autowired
+
     private ProfileService profileService;
+
+    @Autowired
+    public ProfileController(ProfileService profileService) {
+        this.profileService = profileService;
+    }
 
     @GetMapping("login/{profileId}")
     public Profile getOne(@PathVariable Integer profileId){
