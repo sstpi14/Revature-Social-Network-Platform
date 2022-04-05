@@ -4,6 +4,7 @@ import com.revature.EnergySocialNetwork.models.Display;
 
 import java.util.List;
 
+
 public interface DisplayDAO {
     List<Display> getAll();
     List<Display> getAllByProfileId(Integer profileId);

@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "displays")
+
 public class Display {
 
     @Id
@@ -29,6 +30,12 @@ public class Display {
     @Column
     private String description;
 
+    /**
+     *
+     * @param displayId Primary key for display incrementing with every new instance
+     * @param numOfLikes variable representing a number of likes on a post
+     * @param description variable representing any text added to a picture or normal post
+     */
     public Display(Integer displayId, Integer numOfLikes, String description) {
         this.displayId = displayId;
         this.description = description;

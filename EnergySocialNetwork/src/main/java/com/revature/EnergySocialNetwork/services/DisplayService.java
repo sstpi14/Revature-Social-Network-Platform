@@ -17,13 +17,22 @@ public class DisplayService {
     private DisplayDAO displayDAO;
     private ProfileDAO profileDAO;
 
+    /**
+     *
+     * @param displayDAO variable given to reference the DisplayDAO from repositories package
+     * @param profileDAO variable given to reference the ProfileDAO from repositories package
+     */
     @Autowired
     public DisplayService (DisplayDAO displayDAO, ProfileDAO profileDAO) {
         this.displayDAO = displayDAO;
         this.profileDAO = profileDAO;
     }
 
-
+    /**
+     *
+     * @param display variable for when a display is sent to the backend
+     * @return will retrieve the display stored within the database
+     */
     public Display createDisplay(Display display) {
         Integer displayId = displayDAO.createDisplay(display);
 
@@ -36,19 +45,37 @@ public class DisplayService {
         return displayFromDb;
     }
 
+    /**
+     *
+     * @return retrieves all display stored within the database
+     */
     public List<Display> getAll() {
         return displayDAO.getAll();
     }
 
+    /**
+     * Grabs a single display from the arraylist of displayIds
+     * @param displayId is the Id value for the displays
+     * @return will only gather a single display within the array
+     */
     public Display getOneByDisplayId(Integer displayId) {
         return displayDAO.getOne(displayId);
     }
 
+    /**
+     *
+     * @param profileId is the Id of the user
+     * @return all the profiles made in the database
+     */
     public List<Display> getAllByProfileId(Integer profileId) {
 
         return displayDAO.getAllByProfileId(profileId);
     }
-    
+
+    /**
+     * Deletes a display given the Id display
+     * @param displayId is the Id value for a specific display made within the array
+     */
     public void deleteDisplay(Integer displayId) {
         displayDAO.deleteDisplay(getOneByDisplayId(displayId));
     }

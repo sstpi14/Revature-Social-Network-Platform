@@ -10,6 +10,5 @@ public interface ProfileDAO {
     Integer createProfile(Profile profile);
     void updateProfile(Profile profile);
     void deleteProfile(Profile profile);
-
     Profile getOneByUsername(String username);
 }
