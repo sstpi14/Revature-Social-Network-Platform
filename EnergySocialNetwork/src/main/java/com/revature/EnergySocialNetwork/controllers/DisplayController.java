@@ -2,6 +2,7 @@ package com.revature.EnergySocialNetwork.controllers;
 
 import com.revature.EnergySocialNetwork.models.Display;
 import com.revature.EnergySocialNetwork.models.JsonResponse;
+import com.revature.EnergySocialNetwork.models.Profile;
 import com.revature.EnergySocialNetwork.services.DisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -50,4 +51,17 @@ public class DisplayController {
         return displayService.createDisplay(display);
     }
 
+    @PatchMapping("{displayId}/profile/{profileId}")
+    public Display addLikeToDisplay(@PathVariable Integer profileId,@PathVariable Integer displayId){
+        Display displayFromDB = displayService.addToLike(profileId,displayId);
+        if (displayFromDB != null){
+            return displayFromDB;
+        }
+        return null;
+    }
+
+    @GetMapping("likers/{displayId}")
+    public List<Profile> getAllLikersForOneDisplay(@PathVariable Integer displayId){
+        return displayService.getAllLikers(displayId);
+    }
 }
