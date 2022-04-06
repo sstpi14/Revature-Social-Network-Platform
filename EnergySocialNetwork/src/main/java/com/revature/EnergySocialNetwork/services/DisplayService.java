@@ -34,15 +34,20 @@ public class DisplayService {
      * @return will retrieve the display stored within the database
      */
     public Display createDisplay(Display display) {
-        Integer displayId = displayDAO.createDisplay(display);
 
-        Display displayFromDb = displayDAO.getOne(displayId);
+        if (display.getDescription() == null && display.getImg() == null) {
+            return null;
+        } else {
+            Integer displayId = displayDAO.createDisplay(display);
 
-        Profile profile = profileDAO.getOne(displayFromDb.getProfile().getProfileId());
+            Display displayFromDb = displayDAO.getOne(displayId);
 
-        displayFromDb.setProfile(profile);
+            Profile profile = profileDAO.getOne(displayFromDb.getProfile().getProfileId());
 
-        return displayFromDb;
+            displayFromDb.setProfile(profile);
+
+            return displayFromDb;
+        }
     }
 
     /**
@@ -68,7 +73,10 @@ public class DisplayService {
      * @return all the profiles made in the database
      */
     public List<Display> getAllByProfileId(Integer profileId) {
-
+        Profile profileFromDb = profileDAO.getOne(profileId);
+        if (profileFromDb == null) {
+            return null;
+        }
         return displayDAO.getAllByProfileId(profileId);
     }
 

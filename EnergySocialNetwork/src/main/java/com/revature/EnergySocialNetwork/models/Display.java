@@ -48,4 +48,9 @@ public class Display {
         this.description = description;
 
     }
+
+    public Display(Profile profile, String description){
+        this.profile = profile;
+        this.description = description;
+    }
 }

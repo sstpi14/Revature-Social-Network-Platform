@@ -29,4 +29,21 @@ public class Profile {
     private Blob img;
     @Column(unique = true, nullable = false)
     private String email;
+
+    public Profile(String username, String password, String first_name, String last_name, String email) {
+        this.username = username;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+    }
+
+    public Profile(Integer profileId, String username, String password, String first_name, String last_name, String email) {
+        this.profileId = profileId;
+        this.username = username;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+    }
 }
