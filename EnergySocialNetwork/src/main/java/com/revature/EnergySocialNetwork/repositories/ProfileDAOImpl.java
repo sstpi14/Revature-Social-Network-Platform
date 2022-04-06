@@ -84,6 +84,7 @@ public class ProfileDAOImpl implements ProfileDAO{
     public Profile getOneByUsername(String username) {
         Session session = em.unwrap(Session.class);
 
+
         return session.createQuery("from Profile where username = '" + username + "'", Profile.class).getSingleResult();
     }
 }
