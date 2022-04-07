@@ -5,6 +5,7 @@ import com.revature.EnergySocialNetwork.models.Profile;
 import com.revature.EnergySocialNetwork.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -101,5 +102,6 @@ public class ProfileController {
      */
     @GetMapping("all")
     public List<Profile> getAllProfile(){return profileService.getAll();}
+
 
 }
