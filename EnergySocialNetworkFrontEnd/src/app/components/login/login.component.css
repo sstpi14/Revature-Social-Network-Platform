@@ -1,0 +1,28 @@
+.login-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 50px;
+    margin: 100px;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-color: lightgray;
+    justify-content: center;
+}
+
+.login-input{
+    margin-bottom: 5px;
+    padding: 6px;
+    border: 2px solid black;
+    border-radius: 6px;
+    justify-content: center;
+}
+
+#login-btn{
+    border: 2px solid black;
+    border-radius: 6px;
+    margin-left: 25%;
+    margin-right: 25%;
+}

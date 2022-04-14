@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Energy Social Network</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Back to Login</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="register-container">
+    <div id="register-header">REGISTER</div>
+    <input [(ngModel)]="username" class="register-input" type="text" placeholder="username">
+    <input [(ngModel)]="password" class="register-input" type="password" placeholder="password">
+    <input [(ngModel)]="firstname" class="register-input" type="text" placeholder="firstname">
+    <input [(ngModel)]="lastname" class="register-input" type="text" placeholder="lastname">
+    <input [(ngModel)]="email" class="register-input" type="text" placeholder="email">
+    <button (click)="register()" id="register-btn" >REGISTER</button>
+</div>
