@@ -1,4 +1,6 @@
 package com.revature.EnergySocialNetwork.controllers;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +9,8 @@ import com.amazonaws.services.s3.AmazonS3Builder;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.revature.EnergySocialNetwork.models.ResponseMessage;
 import com.revature.EnergySocialNetwork.services.FilesStorageService;
+import com.revature.EnergySocialNetwork.services.ProfileService;
+import com.revature.EnergySocialNetwork.services.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 //@CrossOrigin("http://localhost:9000")
 public class FilesController {
+
     @Autowired
     FilesStorageService storageService;
     @PostMapping("/upload123")

@@ -1,4 +1,5 @@
 package com.revature.EnergySocialNetwork.services;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -12,6 +13,10 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FilesStorageServiceImpl implements FilesStorageService {
+
+    S3Service s3Service = new S3Service();
+
+    //private final Path root = Paths.get(s3Service.uploadFile(file));
     private final Path root = Paths.get("uploads");
     @Override
     public void init() {
@@ -22,7 +27,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
         }
     }
     @Override
-    public void save(MultipartFile file) {
+    public void save(MultipartFile file){
         try {
             Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
         } catch (Exception e) {
@@ -31,7 +36,9 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     }
     @Override
     public Resource load(String filename) {
+
         try {
+
             Path file = root.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
