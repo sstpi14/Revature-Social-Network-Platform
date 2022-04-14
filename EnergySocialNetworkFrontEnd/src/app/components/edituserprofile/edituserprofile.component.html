@@ -13,4 +13,13 @@
         </div>
     </div>
 </nav>
+<div class="register-container">
+    <div id="register-header">REGISTER</div>
+    <input [(ngModel)]="username" class="register-input" type="text" placeholder="username">
+    <input [(ngModel)]="password" class="register-input" type="password" placeholder="password">
+    <input [(ngModel)]="firstname" class="register-input" type="text" placeholder="firstname">
+    <input [(ngModel)]="lastname" class="register-input" type="text" placeholder="lastname">
+    <input [(ngModel)]="email" class="register-input" type="text" placeholder="email">
+    <button (click)="edit()" id="register-btn" >Edit Changes</button>
+</div>
 <h1>EDIT USER PAGE</h1>
