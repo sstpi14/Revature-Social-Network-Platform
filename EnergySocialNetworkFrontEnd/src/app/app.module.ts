@@ -12,13 +12,14 @@ import { EdituserprofileComponent } from './components/edituserprofile/edituserp
 import { OtheruserprofileComponent } from './components/otheruserprofile/otheruserprofile.component';
 import { DisplayblockComponent } from './components/otheruserprofile/displayblock/displayblock.component';
 import{ HttpClientModule } from '@angular/common/http';
+import { UserdisplayblockComponent } from './components/userprofile/userdisplayblock/userdisplayblock.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
-    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, DisplayblockComponent
+    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, DisplayblockComponent, UserdisplayblockComponent
   ],
   imports: [
     BrowserModule,
