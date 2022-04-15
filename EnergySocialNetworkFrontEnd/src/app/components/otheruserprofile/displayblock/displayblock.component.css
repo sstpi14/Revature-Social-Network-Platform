@@ -1,0 +1,28 @@
+#container{
+    padding: 50px;
+    height: fit-content;
+}
+
+
+.block{
+    background-color: rgba(135, 222, 210, 0.606);
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    
+    align-content: space-around;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.like{
+    width: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(137, 43, 226, 0.605);
+    color: rgba(0, 0, 0, 0.958);
+}
