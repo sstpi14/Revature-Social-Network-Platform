@@ -15,3 +15,30 @@
 </nav>
 <h1>HOME FEED</h1>
 
+<div class="displays_container">
+    <div *ngFor="let display of displays" class="display_element">
+        <!-- goes to the poster profile page -->
+        <button  class="display_user" (click)="goToOtherUser($event)">{{display.username}}</button>
+        <div class="display_desciption">{{display.desciption}}</div>
+        <button (click)="toggleLike()"[innerText]="isLiked ? 'Dislike':'Like'"></button>
+    </div>
+</div>
+
+<div class="user_container">
+    <div>{{displays[1].username}}</div>
+    <div>IMG GOES HERE</div>
+    <!-- redircet the user to the profile page -->
+    <button (click)="goToUser($event)">View Profile</button>
+</div>
+
+<button (click)="togglePost()">Create Post</button>
+
+<!-- need to make it visable if isVisable is true -->
+<div class="post_creation">
+    <div class="post">
+        <input [(ngModel)]="post_desciption" type="text" placeholder="What is happening">
+        <button>Upload Picture</button>
+        <button (click)="post()" >Post</button>
+    </div>
+</div>
+
