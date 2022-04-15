@@ -10,17 +10,21 @@ import { HomefeedComponent } from './components/homefeed/homefeed.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { EdituserprofileComponent } from './components/edituserprofile/edituserprofile.component';
 import { OtheruserprofileComponent } from './components/otheruserprofile/otheruserprofile.component';
+import { DisplayblockComponent } from './components/otheruserprofile/displayblock/displayblock.component';
+import{ HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
-    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent
+    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, DisplayblockComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

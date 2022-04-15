@@ -40,8 +40,6 @@ public class ProfileService {
                 return null;
             }
         }
-
-
         Integer profileId = profileDAO.createProfile(profile);
         Profile profileFromDb = profileDAO.getOne(profileId);
         return profileFromDb;

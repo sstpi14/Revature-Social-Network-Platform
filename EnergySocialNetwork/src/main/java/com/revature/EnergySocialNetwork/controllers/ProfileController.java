@@ -32,12 +32,12 @@ public class ProfileController {
     public JsonResponse getOne(@PathVariable Integer profileId){
         JsonResponse jsonResponse;
         Profile profileFromDB = profileService.getOne(profileId);
-        if (profileFromDB == null){
-            jsonResponse = new JsonResponse(false,"profile with id: "+ profileId + " not found",null);
-        }
-        else {
-            jsonResponse = new JsonResponse(true,"Got profile with id: "+ profileId,profileFromDB);
-        }
+            if (profileFromDB == null){
+                jsonResponse = new JsonResponse(false,"profile with id: "+ profileId + " not found",null);
+            }
+            else {
+                jsonResponse = new JsonResponse(true,"Got profile with id: "+ profileId,profileFromDB);
+            }
         return jsonResponse;
     }
 
@@ -50,12 +50,12 @@ public class ProfileController {
     public JsonResponse createProfile(@RequestBody Profile profile){
         JsonResponse jsonResponse;
         Profile profileFromDB = profileService.createOne(profile);
-        if (profileFromDB == null){
-            jsonResponse = new JsonResponse(false,"email or username is already in the database",null);
-        }
-        else {
-            jsonResponse = new JsonResponse(true,"Profile has been created",profileFromDB);
-        }
+            if (profileFromDB == null){
+                jsonResponse = new JsonResponse(false,"email or username is already in the database",null);
+            }
+            else {
+                jsonResponse = new JsonResponse(true,"Profile has been created",profileFromDB);
+            }
         return jsonResponse;
     }
 
@@ -68,12 +68,12 @@ public class ProfileController {
     public JsonResponse updateProfile(@RequestBody Profile profile){
         JsonResponse jsonResponse;
         Profile profileFromDB = profileService.updateOne(profile);
-        if (profileFromDB == null){
-            jsonResponse = new JsonResponse(false,"Profile is not in the database",null);
-        }
-        else {
-            jsonResponse = new JsonResponse(true,"Profile has been updated",profileFromDB);
-        }
+            if (profileFromDB == null){
+                jsonResponse = new JsonResponse(false,"Profile is not in the database",null);
+            }
+            else {
+                jsonResponse = new JsonResponse(true,"Profile has been updated",profileFromDB);
+            }
         return jsonResponse;
     }
 
@@ -86,12 +86,12 @@ public class ProfileController {
     public JsonResponse getOneProfileByUsername(@PathVariable String username){
         JsonResponse jsonResponse;
         Profile profileFromDB = profileService.getOneGivenUsername(username);
-        if (profileFromDB == null){
-            jsonResponse = new JsonResponse(false,"Profile with "+username+ " username was not found",null);
-        }
-        else {
-            jsonResponse = new JsonResponse(true,"Profile found by username",profileFromDB);
-        }
+            if (profileFromDB == null){
+                jsonResponse = new JsonResponse(false,"Profile with "+username+ " username was not found",null);
+            }
+            else {
+                jsonResponse = new JsonResponse(true,"Profile found by username",profileFromDB);
+            }
         return jsonResponse;
     }
 
