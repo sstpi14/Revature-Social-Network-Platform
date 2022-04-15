@@ -58,18 +58,4 @@ public class AWSController {
         return jsonResponse;
     }
 
-    /*@GetMapping
-    public void getObject(@RequestBody String fileName, HttpServletResponse response) throws IOException {
-        S3Object s3Object = awsService.fetchObject(fileName);
-        InputStream stream = s3Object.getObjectContent();
-        response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
-        IOUtils.copy(stream, response.getOutputStream());
-    }*/
-
-    //
-    @GetMapping
-    public URL getObjectURL(@RequestBody String fileName, HttpServletResponse response) throws IOException {
-        URL s3ObjectURL = awsService.fetchObject(fileName);
-        return s3ObjectURL;
-    }
 }

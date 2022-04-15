@@ -74,7 +74,7 @@ public class AWSService {
         return profile;
 
     }
-    public Display storeDisplayPictureURLstoDisplayObject(String url, Integer profileId, Integer displayId){
+    public Display storeDisplayPictureURLstoDisplayObject(String url, Integer profileId, Integer displayId) {
         Display display = displayDAO.getOne(displayId);
         List<String> imgURLs = display.getImg();
         imgURLs.add(url);
@@ -82,23 +82,5 @@ public class AWSService {
         display.setImg(imgURLs);
 
         return display;
-
-    }
-
-    public URL fetchObject(String fileName) {
-        S3Object s3Object;
-        URL s3ObjectURL =  amazonS3Client.getUrl(bucketName, fileName);
-        s3Object = amazonS3Client.getObject(new GetObjectRequest(bucketName, fileName));
-        return s3ObjectURL;
-    }
-
-    public void deleteObject(String key) {
-        try {
-            amazonS3Client.deleteObject(bucketName, key);
-        }catch (AmazonServiceException serviceException) {
-            logger.error(serviceException.getErrorMessage());
-        } catch (AmazonClientException exception) {
-            logger.error("Error while deleting File.");
-        }
     }
 }
