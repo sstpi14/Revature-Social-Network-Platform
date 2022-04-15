@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.net.URL;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,8 @@ public class Display {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer displayId;
-    @Column
-    private Blob img;
+    @ElementCollection
+    List<String> img = new ArrayList<String>();
     @ManyToOne
     private Profile profile;
 //    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL) //this references the variable in the song class
@@ -33,7 +34,7 @@ public class Display {
             joinColumns = @JoinColumn(name = "display_id"),
             inverseJoinColumns = @JoinColumn(name = "profile_id")
     )
-    List<Profile> likers =new ArrayList<>();
+    private List<Profile> likers =new ArrayList<>();
     @Column
     private String description;
 

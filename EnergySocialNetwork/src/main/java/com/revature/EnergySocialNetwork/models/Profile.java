@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.net.URL;
 import java.sql.Blob;
 
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class Profile {
     @Column(nullable = false)
     private String last_name;
     @Column
-    private Blob img;
+    private String img;
     @Column(unique = true, nullable = false)
     private String email;
 

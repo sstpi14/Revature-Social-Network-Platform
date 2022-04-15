@@ -64,7 +64,7 @@ public class ProfileController {
      * @param profile variable of a user
      * @return once a user modifies/edits their profile this will save and changes the values within the database
      */
-    @PutMapping
+    @PatchMapping
     public JsonResponse updateProfile(@RequestBody Profile profile){
         JsonResponse jsonResponse;
         Profile profileFromDB = profileService.updateOne(profile);
