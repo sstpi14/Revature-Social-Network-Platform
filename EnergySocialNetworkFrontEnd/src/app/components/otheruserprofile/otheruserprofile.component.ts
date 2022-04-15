@@ -12,4 +12,6 @@ export class OtheruserprofileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
 }
