@@ -13,13 +13,23 @@
         </div>
     </div>
 </nav>
-<div class="register-container">
-    <div id="register-header">REGISTER</div>
-    <input [(ngModel)]="username" class="register-input" type="text" placeholder="username">
-    <input [(ngModel)]="password" class="register-input" type="password" placeholder="password">
-    <input [(ngModel)]="firstname" class="register-input" type="text" placeholder="firstname">
-    <input [(ngModel)]="lastname" class="register-input" type="text" placeholder="lastname">
-    <input [(ngModel)]="email" class="register-input" type="text" placeholder="email">
-    <button (click)="edit()" id="register-btn" >Edit Changes</button>
+<div class="oldinfo-container">
+    <div id="oldinfo-header">Old Information</div>
+<ul class="list-group">
+    <li class="list-group-item">Username: </li>
+    <li class="list-group-item">Password: </li>
+    <li class="list-group-item">First Name: </li>
+    <li class="list-group-item">Last Name: </li>
+    <li class="list-group-item">Email: </li>
+  </ul>
+</div>
+<div class="edit-container">
+    <div id="edit-header">Edit Profile</div>
+    <input [(ngModel)]="username" class="edit-input" type="text" placeholder="username">
+    <input [(ngModel)]="password" class="edit-input" type="password" placeholder="password">
+    <input [(ngModel)]="firstname" class="edit-input" type="text" placeholder="firstname">
+    <input [(ngModel)]="lastname" class="edit-input" type="text" placeholder="lastname">
+    <input [(ngModel)]="email" class="edit-input" type="text" placeholder="email">
+    <button (click)="edit()" id="edit-btn" >Update</button>
 </div>
 <h1>EDIT USER PAGE</h1>
