@@ -43,11 +43,11 @@ public class DisplayController {
     public JsonResponse getAllByProfileId(@PathVariable Integer profileId) {
         JsonResponse jsonResponse;
         List<Display> displaysFromDb = displayService.getAllByProfileId(profileId);
-        if (displaysFromDb == null){
-            jsonResponse = new JsonResponse(false, "No displays match this profileId", null);
-        } else {
-            jsonResponse = new JsonResponse(true, "Displaying all displays from ProfileId: " + profileId, displaysFromDb);
-        }
+            if (displaysFromDb == null){
+                jsonResponse = new JsonResponse(false, "No displays match this profileId", null);
+            } else {
+                jsonResponse = new JsonResponse(true, "Displaying all displays from ProfileId: " + profileId, displaysFromDb);
+            }
 
         return jsonResponse;
     }
@@ -61,11 +61,11 @@ public class DisplayController {
     public JsonResponse getOneByDisplayId(@PathVariable Integer displayId) {
         JsonResponse jsonResponse;
         Display displayFromDb = displayService.getOneByDisplayId(displayId);
-        if (displayFromDb == null){
-            jsonResponse = new JsonResponse(false, "There are no displays matching this displayId", null);
-        } else {
-            jsonResponse = new JsonResponse(true, "Displaying display with displayId: " + displayId, displayFromDb);
-        }
+            if (displayFromDb == null){
+                jsonResponse = new JsonResponse(false, "There are no displays matching this displayId", null);
+            } else {
+                jsonResponse = new JsonResponse(true, "Displaying display with displayId: " + displayId, displayFromDb);
+            }
         return jsonResponse;
     }
 
@@ -78,12 +78,12 @@ public class DisplayController {
     public JsonResponse deleteDisplay(@PathVariable Integer displayId) {
         JsonResponse jsonResponse;
         Display displayFromDb = displayService.getOneByDisplayId(displayId);
-        if (displayFromDb == null) {
-            jsonResponse = new JsonResponse(false, "There are no displays matching this displayId", null);
-        } else {
-            jsonResponse = new JsonResponse(true, "Display with displayId " + displayId + " has been deleted.", null);
-            displayService.deleteDisplay(displayId);
-        }
+            if (displayFromDb == null) {
+                jsonResponse = new JsonResponse(false, "There are no displays matching this displayId", null);
+            } else {
+                jsonResponse = new JsonResponse(true, "Display with displayId " + displayId + " has been deleted.", null);
+                displayService.deleteDisplay(displayId);
+            }
 
         return jsonResponse;
     }
@@ -97,11 +97,11 @@ public class DisplayController {
     public JsonResponse createDisplay(@RequestBody Display display) {
         JsonResponse jsonResponse;
         Display displayFromDb = displayService.createDisplay(display);
-        if (displayFromDb == null) {
-            jsonResponse = new JsonResponse(false, "Display needs to include image or description", null);
-        } else {
-            jsonResponse = new JsonResponse(true, "Display has been created", displayFromDb);
-        }
+            if (displayFromDb == null) {
+                jsonResponse = new JsonResponse(false, "Display needs to include image or description", null);
+            } else {
+                jsonResponse = new JsonResponse(true, "Display has been created", displayFromDb);
+            }
         return jsonResponse;
     }
 
@@ -109,11 +109,11 @@ public class DisplayController {
     public JsonResponse addLikeToDisplay(@PathVariable Integer profileId,@PathVariable Integer displayId){
         JsonResponse jsonResponse;
         Display displayFromDB = displayService.addToLike(profileId,displayId);
-        if (displayFromDB == null){
-            jsonResponse = new JsonResponse(false, "Profile has already liked this post", null);
-        } else {
-            jsonResponse = new JsonResponse(true, "Profile with profileId: " + profileId + "has liked Display with displayId: " + displayId, displayFromDB);
-        }
+            if (displayFromDB == null){
+                jsonResponse = new JsonResponse(false, "Profile has already liked this post", null);
+            } else {
+                jsonResponse = new JsonResponse(true, "Profile with profileId: " + profileId + "has liked Display with displayId: " + displayId, displayFromDB);
+            }
         return jsonResponse;
     }
 
