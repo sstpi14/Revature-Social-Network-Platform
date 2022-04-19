@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { display } from 'src/app/models/display';
 import { Profiled } from 'src/app/models/dprofile';
 import { Profile } from 'src/app/models/profile';
@@ -14,9 +14,11 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  user:display={username:"matt",desciption:"hello"};
-  user2:display={username:"kev",desciption:"bye"};
-  displays:Array<display> = [this.user,this.user2];
+  user:display={username:"matt",desciption:"hello",img:"",like:false};
+  user2:display={username:"kev",desciption:"bye",img:"",like:true};
+  //displays:Array<display> = [ this.user,this.user2 ];
+  displays:Array<any> = [];
+  profiles:Array<Profile> = [];
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
@@ -28,7 +30,7 @@ export class HomefeedComponent implements OnInit {
     lastname: '',
     image: ''
   }
-  constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private apiServ : ApiService) {}
+  constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
   ngOnInit(): void {
     //this.getAllDisplays
@@ -46,26 +48,44 @@ export class HomefeedComponent implements OnInit {
     })
   }
 
-  getAllDisplays(){
 
+  getAllDisplays(): void {
+    this.dispaySer.getAllDisplays().subscribe(responseBody =>{
+      this.displays = responseBody;
+      this.profile = responseBody[0].profiles;
+      console.log(this.displays);
+    })
   }
 
   goToUser(e:any){
+    this.router.navigate(["/user"]);
     console.log(e.target.innerText);
   }
 
   goToOtherUser(e:any){
+    this.router.navigate(["/otheruser"]);
     console.log(e.target.innerText);
   }
 
-  toggleLike(){
-    this.isLiked=!this.isLiked;
+  toggleLike(e:any){
+    e.target.like = !e.target.like;
+    if(e.target.like == true){
+      e.target.innerText = "Dislike";
+    }else{
+      e.target.innerText = "Like";
+    }
+    console.log(e.target.like);
+    //this.isLiked=!this.isLiked;
   }
 
   togglePost(){
     this.isVisable = !this.isVisable;
   }
 
+  /* 
+  sends a post request
+  brings you back to the homefeed
+  */
   post(){
     console.log(this.post_desciption);
   }

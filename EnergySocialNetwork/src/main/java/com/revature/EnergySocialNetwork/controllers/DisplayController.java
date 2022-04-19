@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("display")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class DisplayController {
 
     private DisplayService displayService;
