@@ -48,9 +48,4 @@ export class LoginComponent implements OnInit {
     });
   }
 
-/*   queryString : string = window.location.search;
-  urlParams = new URLSearchParams(this.queryString);
-  profileId = this.urlParams.get('id')
-  console.log(profileId) */
-
 }
