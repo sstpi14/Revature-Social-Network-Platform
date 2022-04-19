@@ -17,18 +17,19 @@ export class OtheruserprofileComponent implements OnInit {
     lastname: "there"
   };
 
-  profileId : any = null;
+  profileId : number = 0;
 
   profiles : Array<Profiled> = [];
 
   constructor(private profileApi : ApiService) { }
 
   ngOnInit(): void {
+    this.getProfileOfOtherUser();
   }
 
   getProfileOfOtherUser(){
       this.profileApi.getOneProfileByProfileId(this.profileId).subscribe(responseBody => {
-
+        console.log(responseBody);
       });
   }
 }
