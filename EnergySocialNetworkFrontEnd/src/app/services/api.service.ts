@@ -47,7 +47,7 @@ export class ApiService {
   }
 
   getOneProfileByProfileId(profileId : number) {
-    return this.httpCli.get<Profile>(this.baseurl + "profile/login/" + profileId)
+    return this.httpCli.get<JsonResponse>(this.baseurl + "profile/login/" + profileId)
   }
 
   getOneProfileByUsername(username : string): Observable<JsonResponse>{
