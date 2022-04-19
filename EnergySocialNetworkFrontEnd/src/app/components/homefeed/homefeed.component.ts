@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { display } from 'src/app/models/display';
+import { Profiled } from 'src/app/models/dprofile';
+import { Profile } from 'src/app/models/profile';
 import { DisplayServiceService } from 'src/app/service/display-service.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-homefeed',
@@ -15,10 +19,31 @@ export class HomefeedComponent implements OnInit {
   displays:Array<display> = [this.user,this.user2];
   isLiked:boolean = false;
   isVisable:boolean = false;
-  constructor(private dispaySer : DisplayServiceService) {}
+  id!: number;
+
+  profile : Profiled = {
+    profileId: 0,
+    username: '',
+    firstname: '',
+    lastname: '',
+    image: ''
+  }
+  constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private apiServ : ApiService) {}
 
   ngOnInit(): void {
     //this.getAllDisplays
+    this.route.queryParams
+    .subscribe(params => {
+      this.id = params['id'];
+    })
+    this.getOne();
+  }
+
+  getOne(){
+    this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
+      this.profile = response.data;
+      console.log(this.profile);
+    })
   }
 
   getAllDisplays(){
