@@ -1,14 +1,12 @@
 <div id="container">
-    <div class="block">
-        <div class="name">Donneice Fontenot</div>
-        <div class="body">This is the description</div>
+    <div class="block" *ngFor="let display of displays">
+        <div class="name">{{display.profile.username}}</div>
+        <div class="body">{{display.description}}+{{display.image}}</div>
+        <!-- I want to show the number of likers and when you click it pops up the likers -->
+        <div class="like">{{display.likers}}</div>
         <button class="like">Like</button>
     </div>
-    <div class="block">
-        <div class="name">Donneice Fontenot</div>
-        <div class="body">This is the description</div>
-        <button class="like">Like</button>
-    </div>
+   
 
 
 </div>

@@ -1,7 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry} from 'rxjs/operators';
+import { Profiled } from '../models/dprofile';
+import { Full_Display } from '../models/fulldisplay';
 import { JsonResponse } from '../models/jsonresponse';
 import { Profile } from '../models/profile'
 
@@ -10,20 +13,8 @@ import { Profile } from '../models/profile'
 })
 export class ApiService {
 
+
   baseurl = "http://localhost:9000/";
-
-
-  constructor(private httpCli : HttpClient) { }
-
-  getAllGivenProfileId(){
-
-  }
-
-  getOneDisplay(){
-
-  }
-
-  addLike(){
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -31,8 +22,28 @@ export class ApiService {
     })
   }
 
+  constructor(private httpCli : HttpClient) { }
+
+  getAllGivenProfileId(profileId : number){
+    return this.httpCli.get<Full_Display>(`${this.baseurl}display/profile/${profileId}`)
+  }
+
+  getOneDisplay(displayId : number){
+    return this.httpCli.get<Full_Display>(`${this.baseurl}display/${displayId}`)
+  }
+
+  addLike(displayId : number, profileId : number){
+    return this.httpCli.post<Profiled>(`${this.baseurl}/display/${displayId}/profile/${profileId}`,
+      JSON.stringify(profileId+displayId), this.httpOptions)
+
+  }
+
+  getLikers(displayId : number){
+    return this.httpCli.get<Profiled>(`${this.baseurl}display/likers.${displayId}`)
+  }
+  
   //profile API
-  getAllProfiles() {
+  getAllProfiles(){
     return this.httpCli.get<any>(this.baseurl + "profile/all")
   }
 

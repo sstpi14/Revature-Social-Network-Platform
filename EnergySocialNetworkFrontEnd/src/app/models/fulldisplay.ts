@@ -1,13 +1,11 @@
-import { Profile } from "./profile";
+import { Profiled } from "./dprofile";
 
 export interface Full_Display{
     displayId: number;
     image: {
         image: string;
     }
-    profile: Profile;
-    likers: {
-        profile:Profile;
-    }
-    description: string;
+    profile: Profiled;
+    likers: number;
+    description: string; 
 }

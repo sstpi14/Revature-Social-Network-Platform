@@ -21,8 +21,8 @@
 
 <h1>OTHER USER PAGE</h1>
 <div>
-    <div id="userInfo">User name
-       <div> <img id="pic" src="../img/fall.jpeg"> </div>
+    <div id="userInfo"*ngFor="let profile of profiles">  {{profile.firstname}}{{profile.lastname}}
+       <div class="imageContainer"> <img id="pic" [src]="profile.image" alt="profile image"/> </div>
     </div>
 </div>
 <app-displayblock></app-displayblock>
