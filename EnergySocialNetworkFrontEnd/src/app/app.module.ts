@@ -19,7 +19,11 @@ import { UserdisplayblockComponent } from './components/userprofile/userdisplayb
   declarations: [
     AppComponent,
     LoginComponent, 
+<<<<<<< HEAD
     RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, DisplayblockComponent, UserdisplayblockComponent
+=======
+    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, 
+>>>>>>> editprofile
   ],
   imports: [
     BrowserModule,

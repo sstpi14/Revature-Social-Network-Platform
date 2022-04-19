@@ -7,12 +7,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/user">Back To Profile</a>
+            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link active" aria-current="page" routerLink="/user">Profile</a>
+            <a class="nav-link active" aria-current="page" routerLink="/">Logout</a>
             </li>
         </ul>
         </div>
     </div>
 </nav>
+<<<<<<< HEAD
 <div class="oldinfo-container">
     <div id="oldinfo-header">Old Information</div>
 <ul class="list-group">
@@ -34,4 +37,33 @@
     <input [(ngModel)]="email" class="edit-input" type="text" placeholder="email">
     <button (click)="edit()" id="edit-btn" >Update</button>
 </div>
+=======
+<div class="float-container">
+    <div class="float-child">
+        <div class="old-view">
+            <div class="title"> Current info:</div>
+            <ul class="list-group">
+                <li class="list-group-item">Username: </li>
+                <li class="list-group-item">Password: </li>
+                <li class="list-group-item">First Name: </li>
+                <li class="list-group-item">Last Name: </li>
+                <li class="list-group-item">Email: </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="float-child">
+        <div class="edit-view"> 
+            <div class="title"> Edit info:</div>
+            <input [(ngModel)]="username" class="edit-input" type="text" placeholder="username">
+            <input [(ngModel)]="password" class="edit-input" type="password" placeholder="password">
+            <input [(ngModel)]="firstname" class="edit-input" type="text" placeholder="firstname">
+            <input [(ngModel)]="lastname" class="edit-input" type="text" placeholder="lastname">
+            <input [(ngModel)]="email" class="edit-input" type="text" placeholder="email">
+            <button (click)="edit()" id="edit-btn" >Update</button>
+        </div>
+    </div>
+</div>  
+>>>>>>> editprofile
 <h1>EDIT USER PAGE</h1>
+
