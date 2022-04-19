@@ -10,19 +10,18 @@ import { DisplayServiceService } from 'src/app/service/display-service.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  user:display={username:"matt",desciption:"hello"};
-  user2:display={username:"kev",desciption:"bye"};
-  displays:Array<display> = [this.user,this.user2];
+  user:display={username:"matt",desciption:"hello",img:"",like:false};
+  user2:display={username:"kev",desciption:"bye",img:"",like:true};
+  //displays:Array<display> = [ this.user,this.user2 ];
+  displays:Array<any> = [];
   isLiked:boolean = false;
   isVisable:boolean = false;
   constructor(private dispaySer : DisplayServiceService) {}
 
   ngOnInit(): void {
-    //this.getAllDisplays
-  }
-
-  getAllDisplays(){
-
+    this.dispaySer.getAllDisplays().subscribe(responseBody =>{
+      this.displays = responseBody.data;
+    })
   }
 
   goToUser(e:any){
@@ -33,14 +32,25 @@ export class HomefeedComponent implements OnInit {
     console.log(e.target.innerText);
   }
 
-  toggleLike(){
-    this.isLiked=!this.isLiked;
+  toggleLike(e:any){
+    e.target.like = !e.target.like;
+    if(e.target.like == true){
+      e.target.innerText = "Dislike";
+    }else{
+      e.target.innerText = "Like";
+    }
+    console.log(e.target.like);
+    //this.isLiked=!this.isLiked;
   }
 
   togglePost(){
     this.isVisable = !this.isVisable;
   }
 
+  /* 
+  sends a post request
+  brings you back to the homefeed
+  */
   post(){
     console.log(this.post_desciption);
   }

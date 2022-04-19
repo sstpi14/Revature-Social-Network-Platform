@@ -1,4 +1,6 @@
 export interface display{
     username : string;
-    desciption:string;
+    desciption : string;
+    img:string;
+    like:boolean;
 }

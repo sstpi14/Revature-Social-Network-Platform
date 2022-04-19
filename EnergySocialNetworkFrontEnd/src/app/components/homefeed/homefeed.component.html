@@ -18,9 +18,9 @@
 <div class="displays_container">
     <div *ngFor="let display of displays" class="display_element">
         <!-- goes to the poster profile page -->
-        <button  class="display_user" (click)="goToOtherUser($event)">{{display.username}}</button>
+        <button  class="display_user" (click)="goToOtherUser($event)">{{display.profile.username}}</button>
         <div class="display_desciption">{{display.desciption}}</div>
-        <button (click)="toggleLike()"[innerText]="isLiked ? 'Dislike':'Like'"></button>
+        <!-- <button (click)="toggleLike($event)"[innerText]="display.like ? 'Dislike':'Like'"></button> -->
     </div>
 </div>
 
