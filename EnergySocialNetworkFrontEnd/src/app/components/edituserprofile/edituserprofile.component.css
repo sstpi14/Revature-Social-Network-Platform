@@ -1,4 +1,16 @@
-.oldinfo-container{
+.float-container{
+    
+    padding: 40px;
+}
+
+.float-child{
+    width: 50%;
+    float: left;
+    padding: 20px;
+    
+}
+
+.old-view{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -6,35 +18,32 @@
     border-radius: 8px;
     padding: 50px;
     margin: 100px;
-    margin-left: 35%;
-    margin-right: 35%;
+    height: 430px;
     background-color: lightgray;
     justify-content: center;
 }
 
-.list-group{
-    margin: 5px;
-    padding: 6px;
-    border-radius: 6px;
+.edit-view{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 50px;
+    margin: 100px;
+    
+    background-color: lightgray;
     justify-content: center;
+}
+
+.title{
+    font-weight:bold;
+    text-decoration: underline;
+    margin: 10px;
 }
 
 li{
-    margin:3px;
-}
-
-.edit-container{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 50px;
-    margin: 100px;
-    margin-left: 35%;
-    margin-right: 35%;
-    background-color: lightgray;
-    justify-content: center;
+    margin:5px;
 }
 
 .edit-input{

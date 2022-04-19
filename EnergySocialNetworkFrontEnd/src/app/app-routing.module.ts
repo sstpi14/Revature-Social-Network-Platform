@@ -9,6 +9,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
+  {path: "logout", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "home", component: HomefeedComponent},
   {path: "user", component: UserprofileComponent},

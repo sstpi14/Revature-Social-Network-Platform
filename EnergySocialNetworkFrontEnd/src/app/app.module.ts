@@ -15,7 +15,7 @@ import { OtheruserprofileComponent } from './components/otheruserprofile/otherus
   declarations: [
     AppComponent,
     LoginComponent, 
-    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent
+    RegisterComponent, HomefeedComponent, UserprofileComponent, EdituserprofileComponent, OtheruserprofileComponent, 
   ],
   imports: [
     BrowserModule,
