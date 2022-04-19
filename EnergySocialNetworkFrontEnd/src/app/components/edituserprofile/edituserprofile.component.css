@@ -1,4 +1,16 @@
-.oldinfo-container{
+.float-container{
+    
+    padding: 40px;
+}
+
+.float-child{
+    width: 50%;
+    float: left;
+    padding: 20px;
+    
+}
+
+.old-view{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -6,33 +18,34 @@
     border-radius: 8px;
     padding: 50px;
     margin: 100px;
-    margin-right: 60%;
+    height: 430px;
+    width: 450px;
     background-color: lightgray;
     justify-content: center;
 }
 
-.list-group{
-    margin: 5px;
-    padding: 6px;
-    border-radius: 6px;
-    justify-content: center;
-}
-
-li{
-    margin:3px;
-}
-
-.edit-container{
-    
+.edit-view{
+    display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     border: 2px solid black;
     border-radius: 8px;
+    width: 450px;
     padding: 50px;
     margin: 100px;
-    margin-left: 60%;
+    
     background-color: lightgray;
     justify-content: center;
+}
+
+.title{
+    font-weight:bold;
+    text-decoration: underline;
+    margin: 10px;
+}
+
+li{
+    margin:5px;
 }
 
 .edit-input{
@@ -49,4 +62,9 @@ li{
     border-radius: 6px;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+#edit-btn:hover{
+    background-color: rgb(157, 157, 157);
+    transition: 1s;
 }
