@@ -26,3 +26,8 @@
     margin-left: 25%;
     margin-right: 25%;
 }
+
+#login-btn:hover{
+    background-color: rgb(157, 157, 157);
+    transition: 1s;
+}
