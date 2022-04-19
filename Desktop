@@ -1,0 +1,27 @@
+What is Spring Boot?
+	 open source Spring Framework project used to rapidly create Java based
+	 uses highly opinionated auto-configuration
+Spring vs Spring Boot?
+	spring is more customizable, looks through the entire project for beans
+	spring boot only looks in the package with the main driver holding the spring application
+	
+What is Spring MVC?
+	
+What do the following annotations do in Spring MVC?
+    @RestController - defines class as controller and allows all methods to convert their return to json
+    @RequestMapping - sets up endpoint set value and add method
+        - @GetMapping -endpoint for http verb GET, add value
+        - @PostMapping -endpoint for http verb POST, add value
+        - @PutMapping endpoint for http verb PUT, add value
+        - etc...
+    @ResponseBody -allows method to convert their return to json
+    @RequestBody -allows us to convert a json body to a java object
+    @PathVariable -allows us to use path param
+    @RequestParams -allows us to use query param
+
+What is Response Entity?
+
+How do we manipulate sessions in Spring MVC?
+
+What is log4j?
+	a way to save errors 

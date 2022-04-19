@@ -6,4 +6,25 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   constructor() { }
+
+  getOne() {
+
+  }
+
+  getOneByUsername(){
+
+  }
+
+  getAllGivenProfileId(){
+
+  }
+
+  getOneDisplay(){
+
+  }
+
+  addLike(){
+
+  }
+
 }
