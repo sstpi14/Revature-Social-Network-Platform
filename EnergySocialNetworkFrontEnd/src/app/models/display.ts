@@ -1,6 +1,8 @@
+import { Profile } from "./profile";
+
 export interface display{
-    username : string;
     desciption : string;
     img:string;
-    like:boolean;
+    //like:boolean;
+    profile: Profile;
 }

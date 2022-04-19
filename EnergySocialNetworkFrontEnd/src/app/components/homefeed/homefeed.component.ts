@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { display } from 'src/app/models/display';
+import { Full_Display } from 'src/app/models/fulldisplay';
 import { Profile } from 'src/app/models/profile';
 import { DisplayServiceService } from 'src/app/service/display-service.service';
 
@@ -12,11 +13,13 @@ import { DisplayServiceService } from 'src/app/service/display-service.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  user:display={username:"matt",desciption:"hello",img:"",like:false};
-  user2:display={username:"kev",desciption:"bye",img:"",like:true};
-  //displays:Array<display> = [ this.user,this.user2 ];
   displays:Array<any> = [];
   profile:Array<Profile> = [];
+  display: display = {
+    desciption : "",
+    img : "",
+    profile : this.profile[0]
+  };
   isLiked:boolean = false;
   isVisable:boolean = false;
   constructor(private dispaySer : DisplayServiceService,private router : Router) {}
