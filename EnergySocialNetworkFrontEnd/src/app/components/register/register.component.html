@@ -21,5 +21,6 @@
     <input [(ngModel)]="firstname" class="register-input" type="text" placeholder="firstname">
     <input [(ngModel)]="lastname" class="register-input" type="text" placeholder="lastname">
     <input [(ngModel)]="email" class="register-input" type="text" placeholder="email">
+    <div [innerText]="registerMessageVariable"></div>
     <button (click)="register()" id="register-btn" >REGISTER</button>
 </div>

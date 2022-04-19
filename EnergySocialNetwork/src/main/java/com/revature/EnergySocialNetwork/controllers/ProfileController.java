@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("profile")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class ProfileController {
 
     private ProfileService profileService;
@@ -101,5 +102,18 @@ public class ProfileController {
      */
     @GetMapping("all")
     public List<Profile> getAllProfile(){return profileService.getAll();}
+
+    /*@GetMapping("login")
+    public JsonResponse validateCredentials(@RequestBody String username, String password) {
+        JsonResponse jsonResponse;
+        Profile profileFromDb = profileService.validateCredentials(username, password);
+
+        if (profileFromDb == null) {
+            jsonResponse = new JsonResponse(false, "Login Unsuccessful, Try Again", null);
+        } else {
+            jsonResponse = new JsonResponse(true, "Login Successful", profileFromDb);
+        }
+        return jsonResponse;
+    }*/
 
 }
