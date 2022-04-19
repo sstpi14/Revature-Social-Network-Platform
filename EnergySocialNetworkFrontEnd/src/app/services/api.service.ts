@@ -59,6 +59,10 @@ export class ApiService {
     return this.httpCli.post<JsonResponse>(this.baseurl + "profile", JSON.stringify(profile), this.httpOptions)
   }
 
+  updateProfile(profile: Profile): Observable<JsonResponse> {
+    return this.httpCli.patch<JsonResponse>(this.baseurl + "profile", JSON.stringify(profile), this.httpOptions)
+  }
+
   //session API
 
   loginSession(profile: Profile): Observable<String> {

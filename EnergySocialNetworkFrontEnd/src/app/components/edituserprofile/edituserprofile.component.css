@@ -68,3 +68,7 @@ li{
     background-color: rgb(157, 157, 157);
     transition: 1s;
 }
+
+.wrong{
+    color:red;
+}

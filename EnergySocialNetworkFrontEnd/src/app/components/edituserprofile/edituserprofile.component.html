@@ -41,6 +41,7 @@
             <input [(ngModel)]="firstname" class="edit-input" type="text" placeholder="firstname">
             <input [(ngModel)]="lastname" class="edit-input" type="text" placeholder="lastname">
             <input [(ngModel)]="email" class="edit-input" type="text" placeholder="email">
+            <div class="wrong" [innerText]="updateMessageVariable"></div>
             <button (click)="edit()" id="edit-btn" >Save Changes</button>
         </div>
     </div>
