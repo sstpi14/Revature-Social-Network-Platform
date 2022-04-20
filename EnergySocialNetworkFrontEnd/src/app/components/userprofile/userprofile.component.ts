@@ -60,6 +60,10 @@ export class UserprofileComponent implements OnInit {
       }
     })
   }
+  goToEdit(){
+    this.router.navigate(["/edit"], { queryParams: { id: this.profile.profileId }});
+    console.log(this.profile.profileId);
+  }
   
   
 
