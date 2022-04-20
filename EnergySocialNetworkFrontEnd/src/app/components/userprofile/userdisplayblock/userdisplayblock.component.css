@@ -4,16 +4,17 @@
 }
 
 
+
 .user-block{
+    border: 2px solid black;
     background-color: #6cf5aa;
     padding: 10px;
     margin: 20px;
     display: flex;
     border-radius: 20px;
     width:50%;
-    height: 200px;
+    height: max-content;
     flex-direction: column;
-    
     align-content: space-around;
 }
 
@@ -28,4 +29,9 @@
     border-radius: 8px;
     background-color: #f36a6a;
     color: rgba(0, 0, 0, 0.958);
+}
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 150px;
 }

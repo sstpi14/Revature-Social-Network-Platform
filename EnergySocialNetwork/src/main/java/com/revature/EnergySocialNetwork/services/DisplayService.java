@@ -97,7 +97,10 @@ public class DisplayService {
 
         for (int i = 0; i<profileThatHaveLiked.size();i++){
             if (profileThatHaveLiked.get(i).equals(profile)){
-                return null;
+                profileThatHaveLiked.remove(profile);
+
+                display.setLikers(profileThatHaveLiked);
+                return display;
             }
         }
 
@@ -115,5 +118,7 @@ public class DisplayService {
 
         return Likers;
     }
+
+
 
 }
