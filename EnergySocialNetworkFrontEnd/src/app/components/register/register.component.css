@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     border: 2px solid black;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.76);
     border-radius: 8px;
     padding: 50px;
     margin: 100px;
