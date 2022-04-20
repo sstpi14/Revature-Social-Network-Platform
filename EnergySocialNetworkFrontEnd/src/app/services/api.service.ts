@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry} from 'rxjs/operators';
 import { Profiled } from '../models/dprofile';
@@ -25,7 +24,7 @@ export class ApiService {
   constructor(private httpCli : HttpClient) { }
 
   getAllGivenProfileId(profileId : number){
-    return this.httpCli.get<Full_Display>(`${this.baseurl}display/profile/${profileId}`)
+    return this.httpCli.get<JsonResponse>(`${this.baseurl}display/profile/${profileId}`)
   }
 
   getOneDisplay(displayId : number){
@@ -48,7 +47,7 @@ export class ApiService {
   }
 
   getOneProfileByProfileId(profileId : number) {
-    return this.httpCli.get<Profile>(this.baseurl + "profile/login/" + profileId)
+    return this.httpCli.get<JsonResponse>(this.baseurl + "profile/login/" + profileId)
   }
 
   getOneProfileByUsername(username : string): Observable<JsonResponse>{
@@ -65,4 +64,13 @@ export class ApiService {
     return this.httpCli.post<String>(this.baseurl + "session", JSON.stringify(profile), this.httpOptions)
   }
 
+  //Liker API
+
+  addLikeToDisplay(displayId:number,profileId:number,display:any){
+    return this.httpCli.patch<JsonResponse>(this.baseurl+displayId+"/profile/"+profileId,display);
+  }
+
+  getAllLikersOnDisplay(displayId:number):Observable<JsonResponse>{
+    return this.httpCli.get<JsonResponse>(this.baseurl+"likers/"+displayId);
+  }
 }

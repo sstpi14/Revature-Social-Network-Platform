@@ -50,7 +50,7 @@ public class AWSService {
         } catch(AmazonClientException | IOException exception) {
             throw new RuntimeException("Error while uploading file.");
         }
-        return amazonS3Client.getUrl(bucketName, fileName);
+        return amazonS3Client.getUrl(bucketName + "/display-pictures/" + username, fileName);
     }
     public URL storeProfilePictureInS3(MultipartFile file, String fileName, String contentType, Integer profileId) {
         ObjectMetadata objectMetadata = new ObjectMetadata();
@@ -64,7 +64,7 @@ public class AWSService {
         } catch (AmazonClientException | IOException exception) {
             throw new RuntimeException("Error while uploading file.");
         }
-        return amazonS3Client.getUrl(bucketName, fileName);
+        return amazonS3Client.getUrl(bucketName + "/profile-pictures/" + username, fileName);
     }
 
     public Profile storeProfilePictureURLtoProfileObject(String url, Integer profileId){

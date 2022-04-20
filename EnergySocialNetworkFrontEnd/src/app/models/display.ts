@@ -1,4 +1,10 @@
+import { Profiled } from "./dprofile";
+
 export interface display{
-    username : string;
-    desciption:string;
+    description : string;
+    //img:string;
+    //like:boolean;
+    profile: {
+        profileId : number;
+    };
 }
