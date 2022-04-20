@@ -28,9 +28,11 @@ export class HomefeedComponent implements OnInit {
     image: ''
   }
   display: display = {
-    desciption : "",
-    img : "",
-    profile : this.profile
+    description : "",
+    //img : "",
+    profile : {
+      profileId : this.id
+    }
   };
   constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
@@ -97,9 +99,9 @@ export class HomefeedComponent implements OnInit {
   brings you back to the homefeed
   */
   post(){
-    this.display.desciption = this.post_desciption;
-    this.display.profile = this.profile;
+    this.display.description = this.post_desciption;
     console.log(this.display);
+    this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
       this.post_desciption = "";
       this.displays.push(response.data);

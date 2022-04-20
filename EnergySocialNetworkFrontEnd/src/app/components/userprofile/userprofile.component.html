@@ -28,7 +28,7 @@
         </div>
        <div *ngIf="isVisible">
         <button class="updateProfile">Update Profile Picture</button>
-        <button class="editProfile">Edit Profile</button>
+        <button (click)="goToEdit()" class="editProfile">Edit Profile</button>
        </div>
 
     </div>

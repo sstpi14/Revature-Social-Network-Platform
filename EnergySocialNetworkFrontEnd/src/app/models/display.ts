@@ -1,8 +1,10 @@
 import { Profiled } from "./dprofile";
 
 export interface display{
-    desciption : string;
-    img:string;
+    description : string;
+    //img:string;
     //like:boolean;
-    profile: any;
+    profile: {
+        profileId : number;
+    };
 }
