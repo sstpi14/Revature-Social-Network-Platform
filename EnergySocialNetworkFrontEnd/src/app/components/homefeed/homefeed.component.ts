@@ -14,22 +14,24 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  user:display={username:"matt",desciption:"hello",img:"",like:false};
-  user2:display={username:"kev",desciption:"bye",img:"",like:true};
-  //displays:Array<display> = [ this.user,this.user2 ];
   displays:Array<any> = [];
   profiles:Array<Profile> = [];
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
 
-  profile : Profiled = {
+  profile : any = {
     profileId: 0,
     username: '',
     firstname: '',
     lastname: '',
     image: ''
   }
+  display: display = {
+    desciption : "",
+    img : "",
+    profile : this.profile
+  };
   constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
   ngOnInit(): void {
@@ -38,10 +40,11 @@ export class HomefeedComponent implements OnInit {
     .subscribe(params => {
       this.id = params['id'];
     })
-    this.getOne();
+    this.getOneProfile();
+    this.getAllDisplays();
   }
 
-  getOne(){
+  getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
       console.log(this.profile);
@@ -52,13 +55,20 @@ export class HomefeedComponent implements OnInit {
   getAllDisplays(): void {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
-      this.profile = responseBody[0].profiles;
+      //this.profile = responseBody[0].profiles;
       console.log(this.displays);
     })
   }
 
+  goToPersonalUser(e:any){
+    this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
+      this.profile = response.data;
+      this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+      console.log(this.profile.username)
+    })
+  }
   goToUser(e:any){
-    this.router.navigate(["/user"]);
+    this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
     console.log(e.target.innerText);
   }
 
@@ -87,7 +97,13 @@ export class HomefeedComponent implements OnInit {
   brings you back to the homefeed
   */
   post(){
-    console.log(this.post_desciption);
+    this.display.desciption = this.post_desciption;
+    this.display.profile = this.profile;
+    console.log(this.display);
+    this.dispaySer.createDisplay(this.display).subscribe(response=>{
+      this.post_desciption = "";
+      this.displays.push(response.data);
+    })
   }
 
 }
