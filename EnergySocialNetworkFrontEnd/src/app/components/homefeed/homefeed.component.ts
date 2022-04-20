@@ -65,18 +65,25 @@ export class HomefeedComponent implements OnInit {
   goToPersonalUser(e:any){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+      if(e.target.innerText === this.profile.profileId){
+          this.goToUser(e.target.innerText);     }
+      else{
+          this.goToOtherUser(e.target.innerText);      }
       console.log(this.profile.username)
     })
   }
+
+
+
   goToUser(e:any){
     this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
     console.log(e.target.innerText);
   }
-
+  //wasnt being called anywhere
   goToOtherUser(e:any){
-    this.router.navigate(["/otheruser"]);
-    console.log(e.target.innerText);
+    this.router.navigate(["/otheruser"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+    console.log();
+    console.log(this.getOneProfile());
   }
 
   toggleLike(e:any){
