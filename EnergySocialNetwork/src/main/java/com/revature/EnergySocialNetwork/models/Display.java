@@ -26,7 +26,7 @@ public class Display {
     List<String> img = new ArrayList<String>();
     @ManyToOne
     private Profile profile;
-//    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL) //this references the variable in the song class
+//    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL)
 //    private List<Like> likes = new ArrayList<>();
     @ManyToMany
     @JoinTable(
