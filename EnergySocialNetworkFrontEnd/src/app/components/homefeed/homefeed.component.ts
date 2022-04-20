@@ -14,9 +14,6 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  user:display={username:"matt",desciption:"hello",img:"",like:false};
-  user2:display={username:"kev",desciption:"bye",img:"",like:true};
-  //displays:Array<display> = [ this.user,this.user2 ];
   displays:Array<any> = [];
   profiles:Array<Profile> = [];
   isLiked:boolean = false;
@@ -30,6 +27,11 @@ export class HomefeedComponent implements OnInit {
     lastname: '',
     image: ''
   }
+  display: display = {
+    desciption : "",
+    img : "",
+    profile : this.profile
+  };
   constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
   ngOnInit(): void {
@@ -95,7 +97,13 @@ export class HomefeedComponent implements OnInit {
   brings you back to the homefeed
   */
   post(){
-    console.log(this.post_desciption);
+    this.display.desciption = this.post_desciption;
+    this.display.profile = this.profile;
+    console.log(this.display);
+    this.dispaySer.createDisplay(this.display).subscribe(response=>{
+      this.post_desciption = "";
+      this.displays.push(response.data);
+    })
   }
 
 }
