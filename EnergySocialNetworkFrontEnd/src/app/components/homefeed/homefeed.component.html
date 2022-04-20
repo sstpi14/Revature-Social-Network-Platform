@@ -15,40 +15,45 @@
 </nav>
 <h1>HOME FEED</h1>
 
+<!-- Need to make toggle to view post -->
+<button class="toggle_post_display" (click)="togglePost()">Create Post</button>
+<div class="post_creation">
+    <div class="post">
+        <textarea class="post_description" [(ngModel)]="post_desciption" type="text" placeholder="What is happening"> </textarea>
+        <button class="upload_photo_btn">Upload Picture</button>
+        <button class="post_btn" (click)="post()" >Post</button>
+    </div>
+</div>
+
 <div class="displays_container">
     <div *ngFor="let display of displays" class="display_element">
         <!-- goes to the poster profile page -->
-        <button class="display_user" (click)="goToOtherUser($event)">{{display.profile.username}}</button>
-        <div>
-            <img src="{{display.profile.img}}" alt="">
+        <div class="display_user_container">
+            <div>
+                <img class="display_user_img" src="{{display.profile.img}}" alt="">
+            </div>
+            <button class="display_user" (click)="goToUser($event)">{{display.profile.username}}</button>
         </div>
-        <div class="display_desciption">{{display.description}}</div>
-        <!-- Div for Display Picture(s) -->
-        <div>
-            <img src="{{display.img}}" alt="Photo posted by {{display.profile.username}}">
+        
+            <div class="display_contents">
+                <div class="display_description">{{display.description}}</div>
+            <!-- Div for Display Picture(s) -->
+            <div>
+                <img class="display_img" src="{{display.img}}" >
+            </div>
         </div>
-        <!-- <button (click)="toggleLike($event)"[innerText]="display.like ? 'Dislike':'Like'"></button> -->
+        <button class="display_like" (click)="toggleLike($event)"[innerText]="display.like ? 'Dislike':'Like'"></button>
     </div>
 </div>
 
 <div class="user_container">
-    <button (click)="goToPersonalUser($event)">{{profile.username}}</button>
+    <button class="user_username" (click)="goToPersonalUser($event)">{{profile.username}}</button>
     <!-- Div for Personal Profile Picture on the side of screen -->
-    <div>
+    <div class="user_img_container">
         <img src="{{profile.img}}" alt="">
     </div>
     <!-- redircet the user to the profile page -->
-    <div>{{profile.first_name}} {{profile.last_name}}</div>
+    <div class="user_fullname">{{profile.first_name}} {{profile.last_name}}</div>
 </div>
 
-<button (click)="togglePost()">Create Post</button>
-
-<!-- need to make it visable if isVisable is true -->
-<div class="post_creation">
-    <div class="post">
-        <input [(ngModel)]="post_desciption" type="text" placeholder="What is happening">
-        <button>Upload Picture</button>
-        <button (click)="post()" >Post</button>
-    </div>
-</div>
 
