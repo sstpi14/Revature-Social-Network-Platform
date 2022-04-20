@@ -23,7 +23,7 @@ export class HomefeedComponent implements OnInit {
   isVisable:boolean = false;
   id!: number;
 
-  profile : Profiled = {
+  profile : any = {
     profileId: 0,
     username: '',
     firstname: '',
@@ -38,10 +38,11 @@ export class HomefeedComponent implements OnInit {
     .subscribe(params => {
       this.id = params['id'];
     })
-    this.getOne();
+    this.getOneProfile();
+    this.getAllDisplays();
   }
 
-  getOne(){
+  getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
       console.log(this.profile);
@@ -52,13 +53,20 @@ export class HomefeedComponent implements OnInit {
   getAllDisplays(): void {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
-      this.profile = responseBody[0].profiles;
+      //this.profile = responseBody[0].profiles;
       console.log(this.displays);
     })
   }
 
+  goToPersonalUser(e:any){
+    this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
+      this.profile = response.data;
+      this.router.navigate([`/user/${e.target.innerText}`], { queryParams: {id: this.profile.profileId }});
+      console.log(this.profile.username)
+    })
+  }
   goToUser(e:any){
-    this.router.navigate(["/user"]);
+    this.router.navigate([`/user/${e.target.innerText}`], { queryParams: {id: this.profile.profileId }});
     console.log(e.target.innerText);
   }
 

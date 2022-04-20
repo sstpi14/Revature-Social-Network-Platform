@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: "logout", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "home", component: HomefeedComponent},
-  {path: "user", component: UserprofileComponent},
+  {path: "user/:username", component: UserprofileComponent},
   {path: "otheruser", component: OtheruserprofileComponent},
   {path: "edit", component: EdituserprofileComponent},
   {path: "**", redirectTo: ""}
