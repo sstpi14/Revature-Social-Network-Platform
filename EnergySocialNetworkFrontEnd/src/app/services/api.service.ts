@@ -25,7 +25,7 @@ export class ApiService {
   constructor(private httpCli : HttpClient) { }
 
   getAllGivenProfileId(profileId : number){
-    return this.httpCli.get<Full_Display>(`${this.baseurl}display/profile/${profileId}`)
+    return this.httpCli.get<JsonResponse>(`${this.baseurl}display/profile/${profileId}`)
   }
 
   getOneDisplay(displayId : number){

@@ -61,12 +61,12 @@ export class HomefeedComponent implements OnInit {
   goToPersonalUser(e:any){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      this.router.navigate([`/user/${e.target.innerText}`], { queryParams: {id: this.profile.profileId }});
+      this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
       console.log(this.profile.username)
     })
   }
   goToUser(e:any){
-    this.router.navigate([`/user/${e.target.innerText}`], { queryParams: {id: this.profile.profileId }});
+    this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
     console.log(e.target.innerText);
   }
 
