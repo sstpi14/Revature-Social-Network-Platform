@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { display } from 'src/app/models/display';
-<<<<<<< HEAD
-import { Full_Display } from 'src/app/models/fulldisplay';
-=======
 import { Profiled } from 'src/app/models/dprofile';
->>>>>>> develop
 import { Profile } from 'src/app/models/profile';
 import { DisplayServiceService } from 'src/app/service/display-service.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -19,16 +15,7 @@ export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
   displays:Array<any> = [];
-<<<<<<< HEAD
-  profile:Array<Profile> = [];
-  display: display = {
-    desciption : "",
-    img : "",
-    profile : this.profile[0]
-  };
-=======
   profiles:Array<Profile> = [];
->>>>>>> develop
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
@@ -40,6 +27,11 @@ export class HomefeedComponent implements OnInit {
     lastname: '',
     image: ''
   }
+  display: display = {
+    desciption : "",
+    img : "",
+    profile : this.profile
+  };
   constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
   ngOnInit(): void {
@@ -49,6 +41,7 @@ export class HomefeedComponent implements OnInit {
       this.id = params['id'];
     })
     this.getOne();
+    this.getAllDisplays();
   }
 
   getOne(){
@@ -97,7 +90,13 @@ export class HomefeedComponent implements OnInit {
   brings you back to the homefeed
   */
   post(){
-    console.log(this.post_desciption);
+    this.display.desciption = this.post_desciption;
+    this.display.profile = this.profile;
+    console.log(this.display);
+    this.dispaySer.createDisplay(this.display).subscribe(response=>{
+      this.post_desciption = "";
+      this.displays.push(response.data);
+    })
   }
 
 }

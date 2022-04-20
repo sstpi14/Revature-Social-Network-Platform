@@ -4,5 +4,5 @@ export interface display{
     desciption : string;
     img:string;
     //like:boolean;
-    profile: Profiled;
+    profile: any;
 }

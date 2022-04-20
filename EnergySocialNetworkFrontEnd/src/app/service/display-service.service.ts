@@ -25,4 +25,8 @@ export class DisplayServiceService {
   createDisplay(display:any): Observable<JsonResponse>{
     return this.httpCli.post<JsonResponse>("http://localhost:9000/display", JSON.stringify(display), this.httpOptions);
   }
+
+  getAllDisplaysbyId(profileId:number){
+    return this.httpCli.get<any>("http://localhost:9000/display/profile/"+profileId)
+  }
 }
