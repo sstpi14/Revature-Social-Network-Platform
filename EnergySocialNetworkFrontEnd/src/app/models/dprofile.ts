@@ -1,7 +1,7 @@
 export interface Profiled{
     profileId: number;
     username: string;
-    firstname: string;
-    lastname: string;
+    first_name: string;
+    last_name: string;
     image: string;
 }

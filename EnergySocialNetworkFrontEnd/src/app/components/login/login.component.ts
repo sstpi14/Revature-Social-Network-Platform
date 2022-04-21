@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   profile : Profiled = {
     profileId: 0,
     username: '',
-    firstname: '',
-    lastname: '',
+    first_name: '',
+    last_name: '',
     image: ''
   }
 

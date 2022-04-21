@@ -49,7 +49,9 @@ export class HomefeedComponent implements OnInit {
   getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      console.log(this.profile);
+      
+      this.apiServ.currentUser = this.profile
+      console.log(this.apiServ.currentUser);
     })
   }
 
@@ -58,7 +60,7 @@ export class HomefeedComponent implements OnInit {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
       //this.profile = responseBody[0].profiles;
-      console.log(this.displays);
+  
     })
   }
 
@@ -69,7 +71,7 @@ export class HomefeedComponent implements OnInit {
           this.goToUser(e.target.innerText);     }
       else{
           this.goToOtherUser(e.target.innerText);      }
-      console.log(this.profile.username)
+    //  console.log(this.profile.username)
     })
   }
 
@@ -77,13 +79,14 @@ export class HomefeedComponent implements OnInit {
 
   goToUser(e:any){
     this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-    console.log(e.target.innerText);
+
   }
-  //wasnt being called anywhere
-  goToOtherUser(e:any){
+  
+  goToOtherUser(e: any){
+    let username : string = e.target.innerText;
+    this.apiServ.username = username;
     this.router.navigate(["/otheruser"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-    console.log();
-    console.log(this.getOneProfile());
+  
   }
 
   toggleLike(e:any){
@@ -93,7 +96,6 @@ export class HomefeedComponent implements OnInit {
     }else{
       e.target.innerText = "Like";
     }
-    console.log(e.target.like);
     //this.isLiked=!this.isLiked;
   }
 
@@ -107,7 +109,6 @@ export class HomefeedComponent implements OnInit {
   */
   post(){
     this.display.description = this.post_desciption;
-    console.log(this.display);
     this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
       this.post_desciption = "";

@@ -1,3 +1,5 @@
+<html class="light" [ngStyle]="{'background-image' : 'url( '+bg2 +')' }">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Energy Social Network</a>
@@ -18,17 +20,28 @@
         </div>
     </div>
 </nav>
+<button id="changer" (onclick)="changeImage($event)">Change</button>
 
-<!--contant queryString = windows.location.search
-    const urlParams = new URlSearchParams(queryString);
-     const userId = urlParams.get(userId); -->
-
-<h1>OTHER USER PAGE</h1>
+<h1 [ngStyle]="{'background-image' : 'url( '+shine +')' }">{{visitprofile.first_name | titlecase}} {{visitprofile.last_name | titlecase}}</h1>
 <div>
-    <div id="userInfo"*ngFor="let profile of profiles">  {{profile.firstname}}{{profile.lastname}}
-       <div class="imageContainer"> <img id="pic" [src]="profile.image" alt="profile image"/> </div>
+    <div id="userInfo">  <h3>{{visitprofile.username}}</h3>
+       <div class="imageContainer"> <img id="pic" [src]="visitprofile.image"  alt="profile image"/> </div>
+        
     </div>
 </div>
-<app-displayblock></app-displayblock>
+
+<div id="container">
+    <div class="block" *ngFor="let display of displays">
+        <div class="name" [ngStyle]="{'background-image' : 'url( '+glit +')' }">{{display.profile.username}}</div>
+        <div class="body">{{display.description}} {{display.image}}</div>
+        <!-- I want to show the number of likers and when you click it pops up the likers -->
+        <div class="like">{{display.likers}}</div>
+        <button class="like">Like</button>
+    </div>
+   
 
 
+</div>
+
+
+</html>
