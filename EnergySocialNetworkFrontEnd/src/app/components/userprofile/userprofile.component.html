@@ -21,11 +21,11 @@
 <h1>{{profile.username}}</h1>
 <div>
     <div id="userInfo">
-        <h3>{{profile.username}}</h3>
-       <div> 
+        <h3 id="user_username">{{profile.username}}</h3>
+       <div class="user_img_container"> 
            <img id="pic" src="{{profile.img}}"> 
         </div>
-       <div *ngIf="isVisible">
+       <div class="user_edit" *ngIf="isVisible">
         <button class="updateProfile">Update Profile Picture</button>
         <button (click)="goToEdit()" class="editProfile">Edit Profile</button>
        </div>
