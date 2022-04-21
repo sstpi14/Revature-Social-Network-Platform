@@ -26,8 +26,6 @@ public class Display {
     List<String> img = new ArrayList<String>();
     @ManyToOne
     private Profile profile;
-//    @OneToMany(mappedBy = "display", cascade = CascadeType.ALL)
-//    private List<Like> likes = new ArrayList<>();
     @ManyToMany
     @JoinTable(
             name = "Likes",
