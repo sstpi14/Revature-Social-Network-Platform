@@ -37,7 +37,7 @@
         <div class="name" [ngStyle]="{'background-image' : 'url( '+glit +')' }">{{display.profile.username}}</div>
         <div class="body"><h4>{{display.description}} {{display.image}}</h4></div>
         
-        <div class="like" (load)="likers($event, displayId)"></div>
+        <div class="like">{{display.likers.length}}</div>
         
         <button class="like" (click)="like($event, display.displayId)" >Like</button>
     </div>
