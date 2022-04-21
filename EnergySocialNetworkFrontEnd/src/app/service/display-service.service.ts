@@ -7,6 +7,9 @@ import { JsonResponse } from '../models/jsonresponse';
   providedIn: 'root'
 })
 export class DisplayServiceService {
+  getOneDisplay() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private httpCli:HttpClient) { }
 

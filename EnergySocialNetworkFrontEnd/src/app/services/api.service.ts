@@ -16,6 +16,7 @@ export class ApiService {
   username : string = "";
   currentUser : Profiled = <Profiled>{};
   visitUser : Profiled = <Profiled>{};
+  display : Full_Display = <Full_Display>{};
 
 
   baseurl = "http://localhost:9000/";
@@ -33,13 +34,7 @@ export class ApiService {
   }
 
   getOneDisplay(displayId : number){
-    return this.httpCli.get<Full_Display>(`${this.baseurl}display/${displayId}`)
-  }
-
-  addLike(displayId : number, profileId : number){
-    return this.httpCli.post<Profiled>(`${this.baseurl}/display/${displayId}/profile/${profileId}`,
-      JSON.stringify(profileId+displayId), this.httpOptions)
-
+    return this.httpCli.get<JsonResponse>(`${this.baseurl}display/display/${displayId}`)
   }
 
   getLikers(displayId : number){

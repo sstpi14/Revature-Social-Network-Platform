@@ -42,12 +42,13 @@
                 <img class="display_img" src="{{display.img}}" >
             </div>
         </div>
-        <button class="display_like" (click)="toggleLike($event,display.displayId)" [innerText]="isLiked ? 'Dislike':'Like'"></button>
+        <button class="display_like" (click)="toggleLike($event,display.displayId)" [innerText]="isUserInLikesArray(display.likers)"></button>
+        <div>{{display.likers.length}}</div>
     </div>
 </div>
 
 <div class="user_container">
-    <button class="user_username" (click)="goToUser($event)">{{profile.username}}</button>
+    <button class="user_username" (click)="goToOtherUser($event)">{{profile.username}}</button>
     <!-- Div for Personal Profile Picture on the side of screen -->
     <div class="user_img_container">
         <img src="{{profile.img}}" alt="">
