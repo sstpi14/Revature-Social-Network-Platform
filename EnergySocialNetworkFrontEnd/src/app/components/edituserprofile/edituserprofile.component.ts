@@ -21,12 +21,13 @@ export class EdituserprofileComponent implements OnInit {
   updateMessageVariable : string = "";
 
 
-  profile : Profile = {
+  profile : any = {
     username: '',
     password: '',
     first_name: '',
     last_name: '',
-    email: ''
+    email: '',
+    profileId: 0
   }
   constructor(private apiServ : ApiService, private router : Router, private route : ActivatedRoute) { }
 
@@ -57,8 +58,15 @@ export class EdituserprofileComponent implements OnInit {
       if(response.success == false){
         this.updateMessageVariable = "Username or Email already taken."
       } else {
-        this.router.navigate(["/user"])
+        //this.goToUser(this.profile.id);
+        console.log(this.profile);
+
       }
     })
     }
+
+    goToUser(e:any){
+    this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+
+  }
 }
