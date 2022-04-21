@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
           
           this.apiServ.loginSession(response.data).subscribe(response1 => {
             this.profile.profileId = response.data.profileId;
-            /* console.log(response1); */
+            //console.log(response1);
+            this.apiServ.currentUser = response1;
             this.router.navigate(["/home"], { queryParams: {id: this.profile.profileId }});
           })
         } else {

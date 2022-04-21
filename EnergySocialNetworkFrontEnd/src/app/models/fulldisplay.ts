@@ -6,6 +6,6 @@ export interface Full_Display{
         image: string;
     }
     profile: Profiled;
-    likers: number;
+    likers: Array<Profiled>;
     description: string; 
 }
