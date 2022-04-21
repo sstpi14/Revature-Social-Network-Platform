@@ -71,15 +71,15 @@ export class EdituserprofileComponent implements OnInit {
       if(response.success == false){
         this.updateMessageVariable = "Username or Email already taken."
       } else {
-        //this.goToUser(this.profile.id);
-        console.log(this.profile);
+        this.goToUser(this.profile.username, this.profile.profileId);
+        //console.log(this.profile);
 
       }
     })
     }
 
-    goToUser(e:any){
-    this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+    goToUser(name:any, proid:any){
+    this.router.navigate(["/user"], { queryParams: { user: name, id: proid }});
 
   }
 }
