@@ -90,7 +90,7 @@ export class HomefeedComponent implements OnInit {
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
       this.getAllDisplays();
     });
-    console.log(e.target.innerText);
+   // console.log(e.target.innerText);
     
   }
 
