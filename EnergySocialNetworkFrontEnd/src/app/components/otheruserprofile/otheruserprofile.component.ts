@@ -55,13 +55,13 @@ export class OtheruserprofileComponent implements OnInit {
   getOneProfileByUsername(){
     this.apiServ.getOneProfileByUsername(this.user).subscribe(response => {     
       this.visitprofile = response.data; 
-      console.log(response.data.img)
+    //  console.log(response.data.img)
       this.profileId = response.data.profileId;  
       
       this.apiServ.visitUser = this.visitprofile;
       this.apiServ.profileid = this.profileId; 
       this.user_img = response.data.img;
-      console.log(this.user_img)
+   //   console.log(this.user_img)
       
       this.getAllDisplaysGivenProfileId();
       
@@ -71,17 +71,24 @@ export class OtheruserprofileComponent implements OnInit {
   getAllDisplaysGivenProfileId(){
     this.apiServ.getAllGivenProfileId(this.profileId).subscribe(response => {
       this.displays = response.data;
-     // console.log(response.data)
+
     })
   }
 
   like(e : any, displayId : number){
+   
     //first get one display
-    console.log(e.innerText, displayId);
+    console.log(e.isTrusted, displayId);
+    
     this.apiServ.getOneDisplay(displayId).subscribe(response => {
       this.apiServ.display = response.data;
-       //change inner text
-       this.liked = !this.liked;
+      
+      this.liked= !this.liked;
+      e.target.innerText = this.liked ? 'Dislike' : 'Like';
+      
+     
+       
+      
     });
    //call service
     this.apiServ.addLikeOrDislike(displayId, this.apiServ.currentUser.profileId, this.apiServ.display).subscribe(response => {
@@ -93,13 +100,9 @@ export class OtheruserprofileComponent implements OnInit {
   likers(e: any, displayId : number){
     //console.log(e, displayId);
     this.apiServ.getAllLikersOnDisplay(displayId).subscribe(response => {
-      console.log(response);
+     // console.log(response);
     })
    
-    console.log(length)
-     this.likes.filter(function(item){
-      console.log(item)
-    }).length;
   }
   
 
@@ -110,7 +113,7 @@ export class OtheruserprofileComponent implements OnInit {
 
   goToUserHome(){
     this.router.navigate(["/home"], { queryParams: { id: this.id }});
-    console.log(this.id);
+    //console.log(this.id);
   }
 
   }
