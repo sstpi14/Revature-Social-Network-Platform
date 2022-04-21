@@ -15,6 +15,11 @@
     justify-content: center;
     border: 2px solid black;
 }
+
+.profileUsername{
+    padding: 20px;
+}
+
 #user_username{
     display: flex;
     flex-wrap: wrap;

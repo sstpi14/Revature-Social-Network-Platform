@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Profile } from 'src/app/models/profile';
+import { DisplayServiceService } from 'src/app/service/display-service.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class UserprofileComponent implements OnInit {
     image: ''
   }
 
-  constructor(private apiServ : ApiService, private router : Router, private route : ActivatedRoute) {
+  constructor(private dispaySer : DisplayServiceService, private apiServ : ApiService, private router : Router, private route : ActivatedRoute) {
    }
 
 
@@ -38,16 +39,29 @@ export class UserprofileComponent implements OnInit {
       this.id = params['id'];
       this.user = params['user']
     })
-    console.log();
-    this.getAllDisplaysGivenProfileId();
-    this.getOneProfileByProfileId();
     
+    
+    this.getAllDisplays();
+
+    console.log();
+    // this.getAllDisplaysGivenProfileId();
+    this.getOneProfileByProfileId(); 
   }
+  
   getAllDisplaysGivenProfileId(){
     this.apiServ.getAllGivenProfileId(this.id).subscribe(response => {
       this.displays = response.data;
     })
   }
+
+  getAllDisplays(): void {
+    this.dispaySer.getAllDisplays().subscribe(responseBody =>{
+      this.displays = responseBody;
+      //this.profile = responseBody[0].profiles;
+      console.log(this.displays);
+    })
+  }
+
   getOneProfileByProfileId(){
     this.apiServ.getOneProfileByUsername(this.user).subscribe(response => {
       this.profile = response.data;

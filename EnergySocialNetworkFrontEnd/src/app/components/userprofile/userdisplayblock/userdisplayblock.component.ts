@@ -33,18 +33,18 @@ export class UserdisplayblockComponent implements OnInit {
       profileId : this.id
     }
   };
-  dispaySer: any;
+  // dispaySer: any;
 
   constructor(private dispayServ : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
 
   ngOnInit(): void {
-    //this.getAllDisplays
     this.route.queryParams
     .subscribe((params: { [x: string]: number; }) => {
       this.id = params['id'];
     })
     this.getOneProfile();
     this.getAllDisplays();
+    this.getOneDisplay();
   }
 
   getOneProfile(){
@@ -56,12 +56,20 @@ export class UserdisplayblockComponent implements OnInit {
 
 
   getAllDisplays(): void {
-    this.dispaySer.getAllDisplays().subscribe((responseBody: any[]) =>{
+    this.dispayServ.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
       //this.profile = responseBody[0].profiles;
       console.log(this.displays);
     })
   }
+
+  getOneDisplay(): void{
+    this.apiServ.getOneDisplay(this.id).subscribe(response =>{
+      this.profile = response.displayId;
+      console.log(this.profile);
+    })
+  }
+
 
   goToPersonalUser(e:any){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe((response: { data: any; }) => {
@@ -100,7 +108,7 @@ export class UserdisplayblockComponent implements OnInit {
     this.display.description = this.post_desciption;
     console.log(this.display);
     this.display.profile.profileId = this.id;
-    this.dispaySer.createDisplay(this.display).subscribe((response: { data: any; })=>{
+    this.dispayServ.createDisplay(this.display).subscribe((response: { data: any; })=>{
       this.post_desciption = "";
       this.displays.push(response.data);
     })
