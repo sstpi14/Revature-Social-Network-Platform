@@ -12,6 +12,7 @@ export class EdituserprofileComponent implements OnInit {
   id!: number;
   user!: string;
 
+  img: string = "";
   username: string = "";
   password: string = "";
   firstname: string = "";
@@ -43,7 +44,9 @@ export class EdituserprofileComponent implements OnInit {
   getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
+      this.img = response.data.img;
       console.log(this.profile);
+      console.log(this.img);
     })
   }
   
@@ -54,6 +57,16 @@ export class EdituserprofileComponent implements OnInit {
    */
     
   edit(){
+    this.profile = {
+      profileId: this.id,
+      username: this.username,
+      password: this.password,
+      first_name: this.firstname,
+      last_name: this.lastname,
+      img: this.img,
+      email: this.email
+    }
+
     this.apiServ.updateProfile(this.profile).subscribe(response => { 
       if(response.success == false){
         this.updateMessageVariable = "Username or Email already taken."
