@@ -47,7 +47,9 @@ export class HomefeedComponent implements OnInit {
   getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      console.log(this.profile);
+      
+      this.apiServ.currentUser = this.profile
+      console.log(this.apiServ.currentUser);
     })
   }
 
@@ -56,25 +58,33 @@ export class HomefeedComponent implements OnInit {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
       //this.profile = responseBody[0].profiles;
-      console.log(this.displays);
+  
     })
   }
 
   goToPersonalUser(e:any){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-      console.log(this.profile.username)
+      if(e.target.innerText === this.profile.username){
+          this.goToUser(e.target.innerText);     }
+      else{
+          this.goToOtherUser(e.target.innerText);      }
+    //  console.log(this.profile.username)
     })
   }
+
+
+
   goToUser(e:any){
     this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-    console.log(e.target.innerText);
-  }
 
-  goToOtherUser(e:any){
-    this.router.navigate(["/otheruser"]);
-    console.log(e.target.innerText);
+  }
+  
+  goToOtherUser(e: any){
+    let username : string = e.target.innerText;
+    this.apiServ.username = username;
+    this.router.navigate(["/otheruser"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+  
   }
 
   toggleLike(e:any,displayId:number){
@@ -87,6 +97,7 @@ export class HomefeedComponent implements OnInit {
     }else{
       e.target.innerText = "Like";
     }
+    //this.isLiked=!this.isLiked;
   }
 
   togglePost(){
@@ -99,8 +110,7 @@ export class HomefeedComponent implements OnInit {
   */
   post(){
     this.display.description = this.post_desciption;
-    this.display.profile = this.profile;
-    console.log(this.display);
+    this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
       this.post_desciption = "";
       this.displays.push(response.data);

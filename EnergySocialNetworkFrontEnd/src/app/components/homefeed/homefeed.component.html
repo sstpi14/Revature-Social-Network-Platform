@@ -32,7 +32,7 @@
             <div>
                 <img class="display_user_img" src="{{display.profile.img}}" alt="">
             </div>
-            <button class="display_user" (click)="goToUser($event)">{{display.profile.username}}</button>
+            <button class="display_user" (click)="goToOtherUser($event)">{{display.profile.username}}</button>
         </div>
         
             <div class="display_contents">
@@ -47,7 +47,7 @@
 </div>
 
 <div class="user_container">
-    <button class="user_username" (click)="goToPersonalUser($event)">{{profile.username}}</button>
+    <button class="user_username" (click)="goToUser($event)">{{profile.username}}</button>
     <!-- Div for Personal Profile Picture on the side of screen -->
     <div class="user_img_container">
         <img src="{{profile.img}}" alt="">

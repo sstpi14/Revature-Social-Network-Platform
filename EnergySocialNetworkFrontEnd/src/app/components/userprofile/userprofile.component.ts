@@ -49,7 +49,7 @@ export class UserprofileComponent implements OnInit {
   }
   
   getAllDisplaysGivenProfileId(){
-    this.apiServ.getAllGivenProfileId(this.id).subscribe(response => {
+    this.apiServ.getAllGivenProfileId(this.profileId).subscribe(response => {
       this.displays = response.data;
     })
   }

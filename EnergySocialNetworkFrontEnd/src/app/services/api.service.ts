@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry} from 'rxjs/operators';
 import { Profiled } from '../models/dprofile';
@@ -12,6 +11,11 @@ import { Profile } from '../models/profile'
   providedIn: 'root'
 })
 export class ApiService {
+  displayid : number = 0;
+  profileid : number = 0;
+  username : string = "";
+  currentUser : Profiled = <Profiled>{};
+  visitUser : Profiled = <Profiled>{};
 
 
   baseurl = "http://localhost:9000/";
@@ -53,6 +57,9 @@ export class ApiService {
 
   getOneProfileByUsername(username : string): Observable<JsonResponse>{
     return this.httpCli.get<JsonResponse>(this.baseurl + "profile/username/" + username)
+  }
+  getOneProfileByUsername1(): Observable<JsonResponse>{
+    return this.httpCli.get<JsonResponse>(this.baseurl + "profile/username/" + this.username)
   }
 
   createProfile(profile: Profile): Observable<JsonResponse> {

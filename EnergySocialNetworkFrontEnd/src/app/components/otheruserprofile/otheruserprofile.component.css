@@ -6,11 +6,81 @@
     right: 0;
 }
 #pic{
-   width: fit-content;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 280px;
 }
 
 .imageContainer{
     margin-top: 30px;
     display: flex;
     justify-content: center;
+}
+#container{
+    padding: 50px;
+    height: fit-content;
+}
+#changer{
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: aqua;   
+    position: fixed;
+    right: 0px;
+}
+
+#userInfo h3{
+    text-align: center;
+}
+
+
+.block{
+    background-color: rgba(135, 222, 210, 0.606);
+    border-radius: 8px;
+    box-shadow: 4px 4px 4px 8px rgba(153, 29, 76, 0.76);
+
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    
+    align-content: space-around;
+}
+.body{
+    padding: 5px;
+    margin-left: 100px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+  
+}
+h1{
+    color: blanchedalmond;
+    text-shadow: 3px 3px 3px rgb(24, 159, 145), 3px 3px 5px  rgb(216, 189, 53);;
+}
+
+
+.light{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.name{
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 100px;
+    color: rgb(217, 203, 147);
+    font-weight: bold;
+    text-shadow: 3px 3px 3px rgb(24, 159, 145), 3px 3px 5px  rgb(216, 189, 53);;
+}
+
+.like{
+    width: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(137, 43, 226, 0.605);
+    color: rgba(0, 0, 0, 0.958);
 }
