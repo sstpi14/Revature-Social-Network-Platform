@@ -65,6 +65,9 @@ export class UserprofileComponent implements OnInit {
     console.log(this.profile.profileId);
   }
   
-  
+  goToUser(e:any){
+    this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+    console.log(e.target.innerText);
+  }
 
 }
