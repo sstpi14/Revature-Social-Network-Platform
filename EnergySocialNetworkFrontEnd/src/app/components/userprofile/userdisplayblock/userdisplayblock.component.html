@@ -20,7 +20,6 @@
 
     <div class="displays_container">
         <div *ngFor="let display of displays" class="display_element">
-            <!-- goes to the poster profile page -->
                 <div class="display_contents">
                     
                     <div class="display_description">
@@ -28,7 +27,6 @@
                             <div>
                                 <img class="display_user_img" src="{{display.profile.img}}" alt="">
                             </div>
-                            <!-- <button class="display_user" (click)="goToUser($event)">{{display.profile.username}}</button> -->
                         </div>
                         <div class="dd">{{display.description}}
                             </div>

@@ -30,6 +30,6 @@ export class DisplayServiceService {
   }
 
   getAllDisplaysbyId(profileId:number){
-    return this.httpCli.get<any>("http://localhost:9000/display/profile/"+profileId)
+    return this.httpCli.get<any>("http://localhost:9000/display/profile/"+profileId);
   }
 }
