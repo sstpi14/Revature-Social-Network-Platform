@@ -19,6 +19,7 @@ export class HomefeedComponent implements OnInit {
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
+  likerId!: number;
 
   profile : any = {
     profileId: 0,
@@ -57,7 +58,6 @@ export class HomefeedComponent implements OnInit {
   getAllDisplays(): void {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
-      //this.profile = responseBody[0].profiles;
   
     })
   }
@@ -69,7 +69,6 @@ export class HomefeedComponent implements OnInit {
           this.goToUser(e.target.innerText);     }
       else{
           this.goToOtherUser(e.target.innerText);      }
-    //  console.log(this.profile.username)
     })
   }
 
@@ -90,14 +89,10 @@ export class HomefeedComponent implements OnInit {
   toggleLike(e:any,displayId:number){
     e.target.like = !e.target.like;
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
-      console.log(response);
+      this.getAllDisplays();
     });
-    if(e.target.like == true){
-      e.target.innerText = "Dislike";
-    }else{
-      e.target.innerText = "Like";
-    }
-    //this.isLiked=!this.isLiked;
+    console.log(e.target.innerText);
+    
   }
 
   togglePost(){
@@ -115,6 +110,14 @@ export class HomefeedComponent implements OnInit {
       this.post_desciption = "";
       this.displays.push(response.data);
     })
+  }
+  isUserInLikesArray(likers : Array<any>){
+    for (let liker of likers) {
+      if(liker.profileId == this.id) {
+        return "Dislike"
+      }
+    }
+    return "Like"
   }
 
 }
