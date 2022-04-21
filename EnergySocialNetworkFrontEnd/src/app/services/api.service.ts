@@ -14,7 +14,7 @@ export class ApiService {
   displayid : number = 0;
   profileid : number = 0;
   username : string = "";
-  currentUser : Profiled = <Profiled>{};
+  currentUser : any= {};
   visitUser : Profiled = <Profiled>{};
   display : Full_Display = <Full_Display>{};
 
@@ -29,16 +29,13 @@ export class ApiService {
 
   constructor(private httpCli : HttpClient) { }
 
+  //Display Api
   getAllGivenProfileId(profileId : number){
     return this.httpCli.get<JsonResponse>(`${this.baseurl}display/profile/${profileId}`)
   }
 
   getOneDisplay(displayId : number){
     return this.httpCli.get<JsonResponse>(`${this.baseurl}display/display/${displayId}`)
-  }
-
-  getLikers(displayId : number){
-    return this.httpCli.get<Profiled>(`${this.baseurl}display/likers.${displayId}`)
   }
   
   //profile API
@@ -79,5 +76,12 @@ export class ApiService {
 
   getAllLikersOnDisplay(displayId:number):Observable<JsonResponse>{
     return this.httpCli.get<JsonResponse>(this.baseurl+"likers/"+displayId);
+  }
+
+  //Image API
+  uploadDisplayImage(file:Blob,profileId:number,displayId:number){
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.httpCli.post<JsonResponse>(this.baseurl+"upload/displaypic/"+profileId+"/"+displayId,file,this.httpOptions)
   }
 }
