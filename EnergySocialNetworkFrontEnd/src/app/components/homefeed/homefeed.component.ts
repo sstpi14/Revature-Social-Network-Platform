@@ -28,8 +28,8 @@ export class HomefeedComponent implements OnInit {
     image: ''
   }
   display: display = {
-    desciption : "",
-    img : "",
+    description : "",
+    //img : "",
     profile : this.profile
   };
   constructor(private dispaySer : DisplayServiceService, private route : ActivatedRoute, private router : Router, private apiServ : ApiService) {}
@@ -47,7 +47,9 @@ export class HomefeedComponent implements OnInit {
   getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      console.log(this.profile);
+      
+      this.apiServ.currentUser = this.profile
+      console.log(this.apiServ.currentUser);
     })
   }
 
@@ -56,35 +58,45 @@ export class HomefeedComponent implements OnInit {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
       //this.profile = responseBody[0].profiles;
-      console.log(this.displays);
+  
     })
   }
 
   goToPersonalUser(e:any){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
-      this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-      console.log(this.profile.username)
+      if(e.target.innerText === this.profile.profileId){
+          this.goToUser(e.target.innerText);     }
+      else{
+          this.goToOtherUser(e.target.innerText);      }
+    //  console.log(this.profile.username)
     })
   }
+
+
+
   goToUser(e:any){
     this.router.navigate(["/user"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
-    console.log(e.target.innerText);
+
+  }
+  
+  goToOtherUser(e: any){
+    let username : string = e.target.innerText;
+    this.apiServ.username = username;
+    this.router.navigate(["/otheruser"], { queryParams: { user: e.target.innerText, id: this.profile.profileId }});
+  
   }
 
-  goToOtherUser(e:any){
-    this.router.navigate(["/otheruser"]);
-    console.log(e.target.innerText);
-  }
-
-  toggleLike(e:any){
+  toggleLike(e:any,displayId:number){
     e.target.like = !e.target.like;
+    this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
+      console.log(response);
+    });
     if(e.target.like == true){
       e.target.innerText = "Dislike";
     }else{
       e.target.innerText = "Like";
     }
-    console.log(e.target.like);
     //this.isLiked=!this.isLiked;
   }
 
@@ -97,9 +109,8 @@ export class HomefeedComponent implements OnInit {
   brings you back to the homefeed
   */
   post(){
-    this.display.desciption = this.post_desciption;
-    this.display.profile = this.profile;
-    console.log(this.display);
+    this.display.description = this.post_desciption;
+    this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
       this.post_desciption = "";
       this.displays.push(response.data);

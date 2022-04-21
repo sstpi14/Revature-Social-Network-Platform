@@ -22,6 +22,7 @@ import java.net.URL;
 
 @RestController
 @RequestMapping("upload")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class AWSController {
 
     @Autowired

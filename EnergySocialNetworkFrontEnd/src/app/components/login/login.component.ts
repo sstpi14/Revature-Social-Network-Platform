@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   profile : Profiled = {
     profileId: 0,
     username: '',
-    firstname: '',
-    lastname: '',
+    first_name: '',
+    last_name: '',
     image: ''
   }
 
@@ -47,5 +47,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  image : string = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.newscientist.com%2Fwp-content%2Fuploads%2F2022%2F03%2F08165012%2FPRI_218356096.jpg&imgrefurl=https%3A%2F%2Fwww.newscientist.com%2Flastword%2Fmg25333771-200-if-energy-cannot-be-created-or-destroyed-where-does-it-come-from%2F&tbnid=PT_R-UyNlO41pM&vet=12ahUKEwiDjPynkaH3AhWVA50JHfDYD78QMygOegUIARDzAQ..i&docid=Q2NWMS2D2PrhKM&w=1200&h=800&q=energy&hl=en&ved=2ahUKEwiDjPynkaH3AhWVA50JHfDYD78QMygOegUIARDzAQ"
 
 }

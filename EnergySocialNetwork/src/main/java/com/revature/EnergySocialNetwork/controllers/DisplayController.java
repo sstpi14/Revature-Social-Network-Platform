@@ -107,7 +107,7 @@ public class DisplayController {
     }
 
     @PatchMapping("{displayId}/profile/{profileId}") //checked
-    public JsonResponse addLikeToDisplay(@PathVariable Integer profileId,@PathVariable Integer displayId){
+    public JsonResponse changeLikeInDisplay(@PathVariable Integer profileId,@PathVariable Integer displayId){
         JsonResponse jsonResponse;
         Display displayFromDB = displayService.addToLike(profileId,displayId);
             if (displayFromDB == null){
