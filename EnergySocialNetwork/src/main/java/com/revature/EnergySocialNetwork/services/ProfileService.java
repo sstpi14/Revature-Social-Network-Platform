@@ -102,18 +102,4 @@ public class ProfileService {
         return null;
     }
 
-    /*public Profile validateCredentials(String username, String password) {
-        Profile profile = profileDAO.getOneByUsername(username);
-        if (profile == null) {
-            return null;
-        } else {
-
-            if (password.equals(profile.getPassword())) {
-                return profile;
-            } else {
-                return null;
-            }
-        }
-    }*/
-
 }

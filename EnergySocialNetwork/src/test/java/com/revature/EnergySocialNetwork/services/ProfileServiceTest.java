@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -26,12 +27,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class ProfileServiceTest {
+    private ProfileService profileService;
 
     @MockBean
     private ProfileDAO profileDAO = Mockito.spy(ProfileDAO.class);
-
-
-    private ProfileService profileService;
 
     public ProfileServiceTest(){
         this.profileService = new ProfileService(profileDAO);
@@ -42,50 +41,89 @@ class ProfileServiceTest {
     @Test
     void createOne() {
         //arrange
-        int profileId = 1;
-        Integer expectedOutput = profileId;
-
+        Profile expectedOutput = profile;
+        Profile profile = new Profile(1,"test","test123","tester","testing",null,"test@email.com");
+        Integer profileId = profile.getProfileId();
+        String username = profile.getUsername();
+        String email = profile.getEmail();
+        List<Profile> profileCheck = new ArrayList<>();
+        profileCheck.add(profile);
+        //methods to be used during act
+        Mockito.when(profileDAO.createProfile(profile)).thenReturn(profileId);
+        Mockito.when(profileDAO.getAll()).thenReturn(profileCheck);
+        Mockito.when(profileDAO.getOne(profileId)).thenReturn(profile);
         //act
         Profile actualOutput = profileService.createOne(profile);
         //assert
-        Assertions.assertEquals(expectedOutput,actualOutput);
+        assertEquals(expectedOutput,actualOutput);
     }
 
     @Test
     void getOne() {
-        aProfile();
+
         //arrange
-        int profileId = 1;
+        int profileId = profile.getProfileId();
         Profile expectedOutput = profile;
-
-
+        List<Profile> outputs = new ArrayList<>();
+        outputs.add(profile);
+        Mockito.when(profileDAO.getAll()).thenReturn(outputs);
+        Mockito.when(profileDAO.getOne(profileId)).thenReturn(expectedOutput);
         //act
-        Profile actualOutput = profileService.getOne(aProfile().getProfileId());
+        Profile actualOutput = profileService.getOne(profileId);
         //assert
-        Assertions.assertEquals(expectedOutput,actualOutput);
+        assertEquals(expectedOutput,actualOutput);
     }
 
     @Test
     void updateOne() {
-        //arrange
-        int profileId = 1;
-        //act
-        //assert
+       //arrange -only need profile
+        Profile expectedOutput = profile;
+        //act - call service
+        profileService.updateOne(profile);
+        //assert - verify it happened
+        Mockito.verify(profileDAO).updateProfile(expectedOutput);
     }
 
     @Test
     void getAll() {
         //arrange
-        int profileId = 1;
+        Profile profile2 = new Profile(2,"test2","test123","tester2","testing2",null,"test2@email.com");
+        //what to expect
+        List<Profile> expectedOutput = new ArrayList<>();
+        //add profiles
+        expectedOutput.add(profile);
+        expectedOutput.add(profile2);
+        Mockito.when(profileDAO.getAll()).thenReturn(expectedOutput);
         //act
+        List<Profile> actualOutput = profileService.getAll();
+
         //assert
+        assertEquals(actualOutput,expectedOutput);
     }
 
     @Test
     void getOneGivenUsername() {
         //arrange
-        int profileId = 1;
-        //act
-        //assert
+        //set up profiles
+        Profile profile = new Profile(1,"test","test123","tester","testing",null,"test@email.com");
+        Profile profile2 = new Profile(2,"test2","test123","tester2","testing2",null,"test2@email.com");
+        //what to expect
+        Profile expectedOutput = profile;
+        //location of expectation
+        List<Profile> profileCheck = new ArrayList<>();
+        //add profiles
+        profileCheck.add(profile);
+        profileCheck.add(profile2);
+        //to be used during act:
+            //input
+        String username = profile.getUsername();
+            //method to get one
+        Mockito.when(profileDAO.getOneByUsername(profile.getUsername())).thenReturn(expectedOutput);
+            //method to get location
+        Mockito.when(profileDAO.getAll()).thenReturn(profileCheck);
+        //act - call method
+        Profile actualOutput = profileService.getOneGivenUsername(username);
+        //assert - compare
+        assertEquals(expectedOutput,actualOutput);
     }
 }
