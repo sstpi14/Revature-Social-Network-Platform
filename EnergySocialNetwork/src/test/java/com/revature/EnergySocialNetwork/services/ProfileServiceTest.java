@@ -43,6 +43,7 @@ class ProfileServiceTest {
         //arrange
         Profile expectedOutput = profile;
         Profile profile = new Profile(1,"test","test123","tester","testing",null,"test@email.com");
+        Profile fromDB = profile;
         Integer profileId = profile.getProfileId();
         String username = profile.getUsername();
         String email = profile.getEmail();
