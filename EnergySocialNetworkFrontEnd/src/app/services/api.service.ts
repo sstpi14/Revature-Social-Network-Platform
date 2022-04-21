@@ -66,8 +66,8 @@ export class ApiService {
 
   //Liker API
 
-  addLikeToDisplay(displayId:number,profileId:number,display:any){
-    return this.httpCli.patch<JsonResponse>(this.baseurl+displayId+"/profile/"+profileId,display);
+  addLikeOrDislike(displayId:number,profileId:number,display:any){
+    return this.httpCli.patch<JsonResponse>(this.baseurl+"display/"+displayId+"/profile/"+profileId,display);
   }
 
   getAllLikersOnDisplay(displayId:number):Observable<JsonResponse>{

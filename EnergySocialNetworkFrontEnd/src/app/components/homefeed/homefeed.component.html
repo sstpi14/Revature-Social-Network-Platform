@@ -42,7 +42,7 @@
                 <img class="display_img" src="{{display.img}}" >
             </div>
         </div>
-        <button class="display_like" (click)="toggleLike($event)"[innerText]="display.like ? 'Dislike':'Like'"></button>
+        <button class="display_like" (click)="toggleLike($event,display.displayId)" [innerText]="isLiked ? 'Dislike':'Like'"></button>
     </div>
 </div>
 
