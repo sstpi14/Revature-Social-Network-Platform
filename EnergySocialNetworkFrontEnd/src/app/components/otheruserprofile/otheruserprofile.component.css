@@ -6,7 +6,9 @@
     right: 0;
 }
 #pic{
-   width: fit-content;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 280px;
 }
 
 .imageContainer{

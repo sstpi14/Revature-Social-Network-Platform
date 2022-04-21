@@ -24,12 +24,13 @@ export class OtheruserprofileComponent implements OnInit {
   id!: number;
   user!: string;
   profileId!: number;
+  user_img!: string;
 
   //initial profile
   visitprofile : Profiled = <Profiled>{};
   displays : Array<Full_Display> = [];
 
-  constructor(private apiServ : ApiService, private route : ActivatedRoute) {
+  constructor(private apiServ : ApiService, private route : ActivatedRoute, private router : Router) {
    }
 
 
@@ -44,12 +45,15 @@ export class OtheruserprofileComponent implements OnInit {
   }
  
   getOneProfileByUsername(){
-    this.apiServ.getOneProfileByUsername1().subscribe(response => {     
+    this.apiServ.getOneProfileByUsername(this.user).subscribe(response => {     
       this.visitprofile = response.data; 
+      console.log(response.data.img)
       this.profileId = response.data.profileId;  
       
       this.apiServ.visitUser = this.visitprofile;
       this.apiServ.profileid = this.profileId; 
+      this.user_img = response.data.img;
+      console.log(this.user_img)
       
       this.getAllDisplaysGivenProfileId()
     })
@@ -65,6 +69,11 @@ export class OtheruserprofileComponent implements OnInit {
   changeImage(e : any){
     if(e.innerText = `[ngStyle]="{'background-image' : 'url( '+${this.bg3} +')' }"`)
     this.bg3 = this.bg2; 
+  }
+
+  goToUserHome(){
+    this.router.navigate(["/home"], { queryParams: { id: this.id }});
+    console.log(this.id);
   }
 
   }
