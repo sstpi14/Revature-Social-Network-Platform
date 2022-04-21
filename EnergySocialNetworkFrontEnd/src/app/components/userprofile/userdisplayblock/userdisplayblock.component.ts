@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class UserdisplayblockComponent implements OnInit {
 
-  post_desciption:string=""
+  post_desciption:string="";
   displays:Array<any> = [];
   profiles:Array<Profile> = [];
   isLiked:boolean = false;
