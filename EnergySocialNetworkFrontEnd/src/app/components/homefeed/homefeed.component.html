@@ -19,11 +19,8 @@
 <!-- <button class="toggle_post_display" (click)="togglePost()">Create Post</button> -->
 <div class="post_creation">
     <div class="post">
-        <textarea class="post_description" [(ngModel)]="post_desciption" type="text" placeholder="What is happening"> </textarea>
-        <input type="file" class="file-upload"[(ngModel)]="img_link">
-        <!-- <div>{{img_link || "No file uploaded yet."}}
-            <button class="upload_photo_btn" (click)="addImg()">Upload Picture</button>
-        </div> -->
+        <textarea class="post_description" [(ngModel)]="post_desciption" type="text" placeholder="What is happening?"> </textarea>
+        <input type="file" class="file-upload" (change)="getFile($event)">
         <button class="post_btn" (click)="post()" >Post</button>
     </div>
 </div>
