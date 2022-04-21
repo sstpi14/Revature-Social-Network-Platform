@@ -73,4 +73,11 @@ export class ApiService {
   getAllLikersOnDisplay(displayId:number):Observable<JsonResponse>{
     return this.httpCli.get<JsonResponse>(this.baseurl+"likers/"+displayId);
   }
+
+  //Image API
+  uploadDisplayImage(file:Blob,profileId:number,displayId:number){
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.httpCli.post<JsonResponse>(this.baseurl+"upload/displaypic/"+profileId+"/"+displayId,file,this.httpOptions)
+  }
 }

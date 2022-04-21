@@ -14,12 +14,14 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
+  img_link:string="";
   displays:Array<any> = [];
   profiles:Array<Profile> = [];
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
   likerId!: number;
+  img!:any;
 
   profile : any = {
     profileId: 0,
@@ -107,6 +109,10 @@ export class HomefeedComponent implements OnInit {
     this.display.description = this.post_desciption;
     this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
+      this.addImg()
+      this.apiServ.uploadDisplayImage(this.img,this.id,response.data.displayId).subscribe(response=>{
+        console.log(response);
+      });
       this.post_desciption = "";
       this.displays.push(response.data);
     })
@@ -118,6 +124,11 @@ export class HomefeedComponent implements OnInit {
       }
     }
     return "Like"
+  }
+
+  addImg(){
+    console.log(this.img_link);
+    this.img = this.img_link;
   }
 
 }
