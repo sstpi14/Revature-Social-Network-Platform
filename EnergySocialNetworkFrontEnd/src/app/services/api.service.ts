@@ -79,9 +79,11 @@ export class ApiService {
   }
 
   //Image API
-  uploadDisplayImage(file:Blob,profileId:number,displayId:number){
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.httpCli.post<JsonResponse>(this.baseurl+"upload/displaypic/"+profileId+"/"+displayId,file,this.httpOptions)
+  uploadDisplayImage(file:FormData, profileId:number, displayId:number){
+    //const formData = new FormData();
+    return this.httpCli.post<JsonResponse>(this.baseurl+"upload/displaypic/"+profileId+"/"+displayId, file, {
+      reportProgress:true,
+      observe:'events'
+    })
   }
 }

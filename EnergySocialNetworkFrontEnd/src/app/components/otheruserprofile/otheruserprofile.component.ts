@@ -11,10 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class OtheruserprofileComponent implements OnInit {
 
-  bg1 :string =     "https://www.wbcsd.org/var/site/storage/images/media/page-assets/new-projects/new-energy-solutions/new-energy-solutions/63873-4-eng-GB/New-energy-solutions_i1140.jpg";
-  bg2 :string =     "https://cosmosmagazine.com/wp-content/uploads/2021/04/What-is-energy.jpg" ;
   bg3 :string =     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRba_vlE_ij-BuCj3-jD4_gsAJy52h0F3IeIw&usqp=CAU" ;
-  bg4 :string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfk6h3AH-QTyShrUxmhjl8LzuZvY4otcjvbg&usqp=CAU" ;
   glit : string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTES9iSF7zIJUxwufm2LXaGTz-BnbEZyQX78g&usqp=CAU"; 
   shine : string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNUl7AVFOJxD-C5Rc2hxmMAiNrEdloYwk10Q&usqp=CAU";
   
@@ -56,15 +53,11 @@ export class OtheruserprofileComponent implements OnInit {
     this.apiServ.getOneProfileByUsername(this.user).subscribe(response => {     
       this.visitprofile = response.data; 
     //  console.log(response.data.img)
-      this.profileId = response.data.profileId;  
-      
-      this.apiServ.visitUser = this.visitprofile;
-      this.apiServ.profileid = this.profileId; 
+      this.profileId = response.data.profileId;   
       this.user_img = response.data.img;
    //   console.log(this.user_img)
       
-      this.getAllDisplaysGivenProfileId();
-      
+      this.getAllDisplaysGivenProfileId();     
     })
 
   }
@@ -76,10 +69,8 @@ export class OtheruserprofileComponent implements OnInit {
   }
 
   like(e : any, displayId : number){
-   
+   e.target.like = !e.target.like;
     //first get one display
-   console.log( displayId);
-    
     this.apiServ.getOneDisplay(displayId).subscribe(response => {
       this.apiServ.display = response.data;    
     });
@@ -87,24 +78,17 @@ export class OtheruserprofileComponent implements OnInit {
     this.apiServ.addLikeOrDislike(displayId, this.apiServ.currentUser.profileId, this.apiServ.display).subscribe(response => {
      // console.log(response);
     })
-       
-    this.liked= !this.liked;
-    e.target.innerText = this.liked ? 'Dislike' : 'Like';
+   // e.target.innerText = this.liked ? 'Dislike' : 'Like';
 
     }
 
-  likers(e: any, displayId : number){
-    //console.log(e, displayId);
-    this.apiServ.getAllLikersOnDisplay(displayId).subscribe(response => {
-     // console.log(response);
-    })
-   
-  }
-  
-
-  changeImage(e : any){
-    if(e.innerText = `[ngStyle]="{'background-image' : 'url( '+${this.bg3} +')' }"`)
-    this.bg3 = this.bg2; 
+  isUserInLikesArray(likers : Array<any>){
+    for (let liker of likers) {
+      if(liker.profileId == this.id) {
+        return "Dislike"
+      }
+    }
+    return "Like"
   }
 
   goToUserHome(){

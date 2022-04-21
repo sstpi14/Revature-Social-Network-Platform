@@ -1,4 +1,4 @@
-<html class="light" [ngStyle]="{'background-image' : 'url( '+bg2 +')' }">
+<html class="light" [ngStyle]="{'background-image' : 'url( '+bg3 +')' }">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -17,10 +17,9 @@
                 <a class="nav-link active" aria-current="page" routerLink="/">LogOut</a>
                 </li>
             </ul>
-        </div>
+        </div> 
     </div>
 </nav>
-<button id="changer" (onclick)="changeImage($event)">Change</button>
 
 <h1 [ngStyle]="{'background-image' : 'url( '+shine +')' }">{{visitprofile.first_name | titlecase}} {{visitprofile.last_name | titlecase}}</h1>
 <div>
@@ -39,7 +38,7 @@
         
         <div class="like">{{display.likers.length}}</div>
         
-        <button class="like" (click)="like($event, display.displayId)" >Like</button>
+        <button class="like" (click)="like($event, display.displayId)" [innerText]="isUserInLikesArray(display.likers)" >Like</button>
     </div>
    
 

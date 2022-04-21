@@ -14,7 +14,6 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomefeedComponent implements OnInit {
 
   post_desciption:string=""
-  img_link:string="";
   displays:Array<any> = [];
   profiles:Array<Profile> = [];
   isLiked:boolean = false;
@@ -22,6 +21,7 @@ export class HomefeedComponent implements OnInit {
   id!: number;
   likerId!: number;
   img!:any;
+  file!:any;
 
   profile : any = {
     profileId: 0,
@@ -52,7 +52,6 @@ export class HomefeedComponent implements OnInit {
       this.profile = response.data;
       
       this.apiServ.currentUser = this.profile
-     // console.log(this.apiServ.currentUser);
     })
   }
 
@@ -93,8 +92,11 @@ export class HomefeedComponent implements OnInit {
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
       this.getAllDisplays();
     });
-    console.log(e.target.innerText);
+<<<<<<< HEAD
+   // console.log(e.target.innerText);
     
+=======
+>>>>>>> imgfunction
   }
 
   togglePost(){
@@ -109,12 +111,15 @@ export class HomefeedComponent implements OnInit {
     this.display.description = this.post_desciption;
     this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
-      this.addImg()
-      this.apiServ.uploadDisplayImage(this.img,this.id,response.data.displayId).subscribe(response=>{
-        console.log(response);
+      /* this.addImg() */
+      let formData = new FormData();
+      formData.append('file', this.file);
+      this.apiServ.uploadDisplayImage(formData, this.id, response.data.displayId).subscribe(responseBody => {
+        this.getAllDisplays();
       });
       this.post_desciption = "";
-      this.displays.push(response.data);
+      
+      
     })
   }
   isUserInLikesArray(likers : Array<any>){
@@ -126,9 +131,9 @@ export class HomefeedComponent implements OnInit {
     return "Like"
   }
 
-  addImg(){
-    console.log(this.img_link);
-    this.img = this.img_link;
+  getFile(event:any){
+    this.file = event.target.files[0];
   }
+  
 
 }
