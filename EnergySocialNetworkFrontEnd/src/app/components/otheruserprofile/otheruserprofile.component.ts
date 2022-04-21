@@ -20,14 +20,20 @@ export class OtheruserprofileComponent implements OnInit {
   
   isVisible : boolean = false;
   profiles: Array<Profiled> = [];
-  display1 : Full_Display = <Full_Display>{};
+  displayId : number = 0;
   id!: number;
   user!: string;
   profileId!: number;
+  liked : boolean = false;
 
   //initial profile
   visitprofile : Profiled = <Profiled>{};
+  //initial display
+  display : Full_Display = <Full_Display>{};
+  //initial displays
   displays : Array<Full_Display> = [];
+  //initial likes
+  likes : Array<Profiled> = [];
 
   constructor(private apiServ : ApiService, private route : ActivatedRoute) {
    }
@@ -39,7 +45,9 @@ export class OtheruserprofileComponent implements OnInit {
       this.id = params['id'];
       this.user = params['user']  
     })
+
    
+   console.log(this.display.likers);
     this.getOneProfileByUsername();    
   }
  
@@ -51,7 +59,8 @@ export class OtheruserprofileComponent implements OnInit {
       this.apiServ.visitUser = this.visitprofile;
       this.apiServ.profileid = this.profileId; 
       
-      this.getAllDisplaysGivenProfileId()
+      this.getAllDisplaysGivenProfileId();
+      
     })
 
   }
@@ -61,6 +70,34 @@ export class OtheruserprofileComponent implements OnInit {
      // console.log(response.data)
     })
   }
+
+  like(e : any, displayId : number){
+    //first get one display
+    console.log(e.innerText, displayId);
+    this.apiServ.getOneDisplay(displayId).subscribe(response => {
+      this.apiServ.display = response.data;
+       //change inner text
+       this.liked = !this.liked;
+    });
+   //call service
+    this.apiServ.addLikeOrDislike(displayId, this.apiServ.currentUser.profileId, this.apiServ.display).subscribe(response => {
+     // console.log(response);
+    })
+
+    }
+
+  likers(e: any, displayId : number){
+    //console.log(e, displayId);
+    this.apiServ.getAllLikersOnDisplay(displayId).subscribe(response => {
+      console.log(response);
+    })
+   
+    console.log(length)
+     this.likes.filter(function(item){
+      console.log(item)
+    }).length;
+  }
+  
 
   changeImage(e : any){
     if(e.innerText = `[ngStyle]="{'background-image' : 'url( '+${this.bg3} +')' }"`)

@@ -49,7 +49,7 @@ export class HomefeedComponent implements OnInit {
       this.profile = response.data;
       
       this.apiServ.currentUser = this.profile
-      console.log(this.apiServ.currentUser);
+     // console.log(this.apiServ.currentUser);
     })
   }
 
@@ -57,6 +57,7 @@ export class HomefeedComponent implements OnInit {
   getAllDisplays(): void {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
+     
       //this.profile = responseBody[0].profiles;
   
     })
@@ -90,7 +91,7 @@ export class HomefeedComponent implements OnInit {
   toggleLike(e:any,displayId:number){
     e.target.like = !e.target.like;
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
-      console.log(response);
+     // console.log(response);
     });
     if(e.target.like == true){
       e.target.innerText = "Dislike";

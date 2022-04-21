@@ -31,12 +31,13 @@
 </div>
 
 <div id="container">
-    <div class="block" *ngFor="let display of displays">
+    <div class="block" *ngFor="let display of displays" >
         <div class="name" [ngStyle]="{'background-image' : 'url( '+glit +')' }">{{display.profile.username}}</div>
-        <div class="body">{{display.description}} {{display.image}}</div>
-        <!-- I want to show the number of likers and when you click it pops up the likers -->
-        <div class="like">{{display.likers}}</div>
-        <button class="like">Like</button>
+        <div class="body"><h4>{{display.description}} {{display.image}}</h4></div>
+        
+        <div class="like" {{likers()}}></div>
+        
+        <button class="like" (click)="like($event, display.displayId)" [innerText]="liked ? 'Dislike' : 'Like'  " ></button>
     </div>
    
 
