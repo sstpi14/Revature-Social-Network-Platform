@@ -78,22 +78,18 @@ export class OtheruserprofileComponent implements OnInit {
   like(e : any, displayId : number){
    
     //first get one display
-    console.log(e.isTrusted, displayId);
+   console.log( displayId);
     
     this.apiServ.getOneDisplay(displayId).subscribe(response => {
-      this.apiServ.display = response.data;
-      
-      this.liked= !this.liked;
-      e.target.innerText = this.liked ? 'Dislike' : 'Like';
-      
-     
-       
-      
+      this.apiServ.display = response.data;    
     });
    //call service
     this.apiServ.addLikeOrDislike(displayId, this.apiServ.currentUser.profileId, this.apiServ.display).subscribe(response => {
      // console.log(response);
     })
+       
+    this.liked= !this.liked;
+    e.target.innerText = this.liked ? 'Dislike' : 'Like';
 
     }
 

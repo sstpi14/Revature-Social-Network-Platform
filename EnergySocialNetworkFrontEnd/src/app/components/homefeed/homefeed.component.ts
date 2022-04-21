@@ -66,10 +66,9 @@ export class HomefeedComponent implements OnInit {
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
       if(e.target.innerText === this.profile.username){
-          this.goToUser(e.target.innerText);     }
-      else{
-          this.goToOtherUser(e.target.innerText);      }
-    })
+        this.goToUser(e.target.innerText);     }
+        else{
+            this.goToOtherUser(e.target.innerText);      }})
   }
 
 
