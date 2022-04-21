@@ -1,14 +1,53 @@
+
+
 <div id="user-container">
     <div class="user-block">
-        <div class="user-name"><h3>James Yang</h3></div>
-        <div class="user-body">This is the description</div>
-        <button class="user-like">Like</button>
-    </div>
-    <div class="user-block">
-        <div class="user-name"><h3>James Yang</h3></div>
-        <div class="user-body">This is the description</div>
-        <button class="user-like">Like</button>
+        <div class="user-name"><h3>{{profile.username}}</h3>
+            <div class="post_creation">
+                <div class="post">
+                    <div class="UPP">
+                    <button class="upload_picture">Upload Picture</button>
+                    <button class="user_post"(click)="post()" >Post</button>
+                    </div>
+                    <br>
+                    <!-- <input class="user_input" [(ngModel)]="post_desciption" type="text" placeholder="What's in your mind"> -->
+                    <textarea name="input" id="user_input" cols="30" rows="10" [(ngModel)]="post_desciption" type="text" placeholder="What's in your mind"></textarea>
+                </div>
+            </div>
+        </div>
     </div>
 
 
+    <div class="displays_container">
+        <div *ngFor="let display of displays" class="display_element">
+            <!-- goes to the poster profile page -->
+            <div class="display_user_container">
+                <div>
+                    <img class="display_user_img" src="{{display.profile.img}}" alt="">
+                </div>
+                <!-- <button class="display_user" (click)="goToUser($event)">{{display.profile.username}}</button> -->
+            </div>
+            
+                <div class="display_contents">
+                    <div class="display_description">
+                        <div class="dd">{{display.description}}
+                            </div>
+                            
+                            <br>
+
+                            <div>
+                        <button class="posted_btn">Like</button>
+                        <button class="posted_btn">Delete</button>
+                        <input type="text" name="Comment" id="comment" placeholder="Comment">
+                        <button class="posted_btn">Comment</button>
+                            </div>
+                    </div>
+                <!-- Div for Display Picture(s) -->
+                <div>
+                    <img class="display_img" src="{{display.img}}" >
+                </div>
+            </div>
+            <!-- <button class="display_like" (click)="toggleLike($event,display.displayId)" [innerText]="isLiked ? 'Dislike':'Like'"></button> -->
+        </div>
+    </div>
 </div>
