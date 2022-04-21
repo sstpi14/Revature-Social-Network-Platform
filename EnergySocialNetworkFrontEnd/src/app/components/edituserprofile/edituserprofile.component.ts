@@ -45,8 +45,8 @@ export class EdituserprofileComponent implements OnInit {
     this.apiServ.getOneProfileByProfileId(this.id).subscribe(response => {
       this.profile = response.data;
       this.img = response.data.img;
-      console.log(this.profile);
-      console.log(this.img);
+      //console.log(this.profile);
+      //console.log(this.img);
     })
   }
   
