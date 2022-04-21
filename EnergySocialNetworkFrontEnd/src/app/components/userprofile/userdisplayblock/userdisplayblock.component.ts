@@ -65,8 +65,7 @@ export class UserdisplayblockComponent implements OnInit {
 
   getOneDisplay(): void{
     this.apiServ.getOneDisplay(this.id).subscribe(response =>{
-      this.profile = response;
-      //this.profile = response.displayId;
+      this.profile = response.data.displayId;
       console.log(this.profile);
     })
   }
