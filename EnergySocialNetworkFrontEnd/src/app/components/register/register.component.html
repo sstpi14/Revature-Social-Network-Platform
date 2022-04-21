@@ -20,7 +20,7 @@
     <input [(ngModel)]="password" class="register-input" type="password" placeholder="password">
     <input [(ngModel)]="firstname" class="register-input" type="text" placeholder="firstname">
     <input [(ngModel)]="lastname" class="register-input" type="text" placeholder="lastname">
-    <input [(ngModel)]="email" class="register-input" type="text" placeholder="email">
-    <div [innerText]="registerMessageVariable"></div>
+    <input [(ngModel)]="email" class="register-input" type="email" placeholder="email">
+    <div class="wrong" [innerText]="registerMessageVariable"></div>
     <button (click)="register()" id="register-btn" >REGISTER</button>
 </div>

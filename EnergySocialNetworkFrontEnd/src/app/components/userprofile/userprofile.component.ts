@@ -27,7 +27,7 @@ export class UserprofileComponent implements OnInit {
     username: '',
     firstname: '',
     lastname: '',
-    image: ''
+    image: '',
   }
 
   constructor(private dispaySer : DisplayServiceService, private apiServ : ApiService, private router : Router, private route : ActivatedRoute) {
