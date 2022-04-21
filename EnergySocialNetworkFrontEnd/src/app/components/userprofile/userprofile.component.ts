@@ -18,6 +18,7 @@ export class UserprofileComponent implements OnInit {
   id!: number;
   user!: string;
   profileId!: number;
+  JBG3: string = "http://4.bp.blogspot.com/-QlePmWOihy0/VWwXhIBhfyI/AAAAAAAAdS4/2h8cu3v2iN4/s1600/201b0ace7a603787e553701e6c679791d579d9e8.jpeg";
 
  
 
