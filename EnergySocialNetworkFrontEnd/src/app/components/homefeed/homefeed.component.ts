@@ -58,7 +58,8 @@ export class HomefeedComponent implements OnInit {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
       this.displays = responseBody;
       //this.profile = responseBody[0].profiles;
-  
+      console.log(responseBody);
+      console.log(responseBody.Like)
     })
   }
 
@@ -97,7 +98,6 @@ export class HomefeedComponent implements OnInit {
     }else{
       e.target.innerText = "Like";
     }
-    //this.isLiked=!this.isLiked;
   }
 
   togglePost(){
