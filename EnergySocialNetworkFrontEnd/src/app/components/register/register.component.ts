@@ -43,13 +43,25 @@ export class RegisterComponent implements OnInit {
       last_name: this.lastname,
       email: this.email
     }
-    this.apiServ.createProfile(this.profile).subscribe(response => { 
-      if(response.success == false){
-        this.registerMessageVariable = "Username or Email already taken."
-      } else {
-        this.router.navigate(["/login"])
+
+
+      var emailatfinder = this.profile.email.indexOf("@")
+      var emaildotfinder = this.profile.email.indexOf(".com")
+      if(this.profile.username === "" || this.profile.password === "" || this.profile.first_name === "" || this.profile.last_name === "" || this.profile.email === ""){
+        this.registerMessageVariable = "Fill in all fields"
+      }
+      else if(emailatfinder == -1 || emaildotfinder == -1){
+        this.registerMessageVariable = "Email must have @ and .com";
+      }
+      else{
+        this.apiServ.createProfile(this.profile).subscribe(response => { 
+        if(response.success == false){
+          this.registerMessageVariable = "Username or Email already taken."
+        } else {
+          this.router.navigate(["/login"])
       }
     })
+    }
     }
 
 }

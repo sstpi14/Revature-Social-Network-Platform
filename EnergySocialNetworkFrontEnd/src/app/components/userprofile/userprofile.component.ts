@@ -18,7 +18,12 @@ export class UserprofileComponent implements OnInit {
   id!: number;
   user!: string;
   profileId!: number;
+<<<<<<< HEAD
   JBG3: string = "http://4.bp.blogspot.com/-QlePmWOihy0/VWwXhIBhfyI/AAAAAAAAdS4/2h8cu3v2iN4/s1600/201b0ace7a603787e553701e6c679791d579d9e8.jpeg";
+=======
+  file!:any;
+  isEditPicture: boolean = false;
+>>>>>>> d985f0eb1fdddcbeebf5de29baa25d7d01c2482a
 
  
 
@@ -84,6 +89,23 @@ export class UserprofileComponent implements OnInit {
   goToUserHome(){
     this.router.navigate(["/home"], { queryParams: { id: this.id }});
     //console.log(this.id);
+  }
+  getFile(event:any){
+    this.file = event.target.files[0];
+  }
+  submitProfilePicture(){
+    let formData = new FormData();
+    formData.append('file', this.file);
+    this.apiServ.uploadProfilePic(formData, this.id).subscribe(responseBody => {
+      this.getOneProfileByProfileId();
+    })
+  }
+  isDivVisible(){
+    if (this.isEditPicture == true) {
+      this.isEditPicture = false;
+    } else {
+      this.isEditPicture = true;
+    }
   }
 
 }

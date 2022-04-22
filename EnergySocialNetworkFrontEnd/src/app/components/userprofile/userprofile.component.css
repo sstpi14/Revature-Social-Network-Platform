@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     flex-direction: column;
     background-color: #6cf5aa;
-    width: fit-content;
     height: fit-content;
     position:fixed;
     padding: 20px;
@@ -54,10 +53,12 @@
 }
 .updateProfile{
     background-color: #f36a6a;
+    width: fit-content;
     border-radius: 5px;
     margin-right: 10px;
 }
 .editProfile{
+    width: fit-content;
     background-color: #f36a6a ;
     border-radius: 5px;
 }
@@ -66,4 +67,19 @@ img {
     border-radius: 4px;
     width: 280px;
 }
+<<<<<<< HEAD
 
+=======
+.profilepic{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.post_btn{
+    background-color: #f36a6a;
+    width: fit-content;
+    margin-top: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+>>>>>>> d985f0eb1fdddcbeebf5de29baa25d7d01c2482a

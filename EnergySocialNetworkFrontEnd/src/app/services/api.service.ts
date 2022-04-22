@@ -86,4 +86,11 @@ export class ApiService {
       observe:'events'
     })
   }
+
+  uploadProfilePic(file:FormData, profileId:number){
+    return this.httpCli.post<JsonResponse>(this.baseurl+"upload/profilepic/"+profileId, file, {
+      reportProgress:true,
+      observe:'events'
+    })
+  }
 }

@@ -20,17 +20,15 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static com.revature.EnergySocialNetwork.prototype.ProfilePrototype.aProfile;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class ProfileServiceTest {
     private ProfileService profileService;
 
-    @MockBean
-    private ProfileDAO profileDAO = Mockito.spy(ProfileDAO.class);
+    private ProfileDAO profileDAO = Mockito.mock(ProfileDAO.class);
 
     public ProfileServiceTest(){
         this.profileService = new ProfileService(profileDAO);
@@ -42,16 +40,14 @@ class ProfileServiceTest {
     void createOne() {
         //arrange
         Profile expectedOutput = profile;
-        Profile profile = new Profile(1,"test","test123","tester","testing",null,"test@email.com");
+        Profile profile = new Profile(1,"test","test123","tester","testing","test@email.com");
+        Profile profile1 = new Profile(2, "test2", "pass", "test", "test", "test@test.com");
         Profile fromDB = profile;
         Integer profileId = profile.getProfileId();
         String username = profile.getUsername();
         String email = profile.getEmail();
-        List<Profile> profileCheck = new ArrayList<>();
-        profileCheck.add(profile);
         //methods to be used during act
         Mockito.when(profileDAO.createProfile(profile)).thenReturn(profileId);
-        Mockito.when(profileDAO.getAll()).thenReturn(profileCheck);
         Mockito.when(profileDAO.getOne(profileId)).thenReturn(profile);
         //act
         Profile actualOutput = profileService.createOne(profile);

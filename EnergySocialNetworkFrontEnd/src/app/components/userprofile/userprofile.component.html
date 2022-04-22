@@ -20,18 +20,21 @@
         </div>
     </div>
 </nav>
-<h1 class="profileUsername">{{profile.username}}</h1>
+<h1 class="profileUsername">{{profile.first_name}} {{profile.last_name}}</h1>
 <div>
     <div id="userInfo">
         <h3 id="user_username">{{profile.username}}</h3>
-       <div class="user_img_container"> 
+        <div class="user_img_container"> 
            <img id="pic" src="{{profile.img}}"> 
         </div>
-       <div class="user_edit" *ngIf="isVisible">
-        <button class="updateProfile">Update Profile Picture</button>
-        <button (click)="goToEdit()" class="editProfile">Edit Profile</button>
-       </div>
-
+        <div class="user_edit">
+            <button class="updateProfile" (click)="isDivVisible()">Update Profile Picture</button>
+            <button (click)="goToEdit()" class="editProfile">Edit Profile</button>
+        </div>
+        <div class="profilepic" *ngIf="isEditPicture">
+            <input type="file" class="file-upload" (change)="getFile($event)"> 
+            <button class="post_btn" (click)="submitProfilePicture()" >Submit</button>
+        </div>
     </div>
 </div>
 <app-userdisplayblock></app-userdisplayblock>
