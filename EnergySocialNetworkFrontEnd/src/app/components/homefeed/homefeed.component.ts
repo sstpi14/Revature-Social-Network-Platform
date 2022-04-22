@@ -92,11 +92,6 @@ export class HomefeedComponent implements OnInit {
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
       this.getAllDisplays();
     });
-<<<<<<< HEAD
-   // console.log(e.target.innerText);
-    
-=======
->>>>>>> imgfunction
   }
 
   togglePost(){
@@ -111,7 +106,6 @@ export class HomefeedComponent implements OnInit {
     this.display.description = this.post_desciption;
     this.display.profile.profileId = this.id;
     this.dispaySer.createDisplay(this.display).subscribe(response=>{
-      /* this.addImg() */
       let formData = new FormData();
       formData.append('file', this.file);
       this.apiServ.uploadDisplayImage(formData, this.id, response.data.displayId).subscribe(responseBody => {

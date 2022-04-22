@@ -42,15 +42,14 @@ class ProfileServiceTest {
     void createOne() {
         //arrange
         Profile expectedOutput = profile;
-        Profile profile = new Profile(1,"test","test123","tester","testing",null,"test@email.com");
+        Profile profile = new Profile(1,"test","test123","tester","testing","test@email.com");
+        Profile profile1 = new Profile(2, "test2", "pass", "test", "test", "test@test.com");
         Profile fromDB = profile;
         Integer profileId = profile.getProfileId();
         String username = profile.getUsername();
         String email = profile.getEmail();
-        List<Profile> profileCheck = new ArrayList<>();
         //methods to be used during act
         Mockito.when(profileDAO.createProfile(profile)).thenReturn(profileId);
-        Mockito.when(profileDAO.getAll()).thenReturn(profileCheck);
         Mockito.when(profileDAO.getOne(profileId)).thenReturn(profile);
         //act
         Profile actualOutput = profileService.createOne(profile);
