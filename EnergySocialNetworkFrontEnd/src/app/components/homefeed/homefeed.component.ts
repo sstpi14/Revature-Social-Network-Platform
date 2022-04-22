@@ -92,11 +92,6 @@ export class HomefeedComponent implements OnInit {
     this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
       this.getAllDisplays();
     });
-<<<<<<< HEAD
-   // console.log(e.target.innerText);
-    
-=======
->>>>>>> imgfunction
   }
 
   togglePost(){
