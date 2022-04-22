@@ -28,8 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProfileServiceTest {
     private ProfileService profileService;
 
-    @MockBean
-    private ProfileDAO profileDAO = Mockito.spy(ProfileDAO.class);
+    private ProfileDAO profileDAO = Mockito.mock(ProfileDAO.class);
 
     public ProfileServiceTest(){
         this.profileService = new ProfileService(profileDAO);
