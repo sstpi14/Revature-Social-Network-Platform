@@ -127,7 +127,7 @@ class ProfileControllerTest {
 
     @Test
     void getAllProfile() {
-      
+
     }
 
 }
