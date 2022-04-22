@@ -20,9 +20,8 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static com.revature.EnergySocialNetwork.prototype.ProfilePrototype.aProfile;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 

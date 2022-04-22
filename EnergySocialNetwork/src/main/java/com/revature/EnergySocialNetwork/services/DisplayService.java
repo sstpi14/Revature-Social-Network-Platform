@@ -90,7 +90,6 @@ public class DisplayService {
 
     public Display addToLike(Integer profileId,Integer displayId){
         Display display = displayDAO.getOne(displayId);
-
         Profile profile = profileDAO.getOne(profileId);
 
         List<Profile> profileThatHaveLiked = display.getLikers();
