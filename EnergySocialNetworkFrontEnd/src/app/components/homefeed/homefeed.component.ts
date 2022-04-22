@@ -58,7 +58,7 @@ export class HomefeedComponent implements OnInit {
 
   getAllDisplays(): void {
     this.dispaySer.getAllDisplays().subscribe(responseBody =>{
-      this.displays = responseBody;
+      this.displays = responseBody.reverse();
   
     })
   }
