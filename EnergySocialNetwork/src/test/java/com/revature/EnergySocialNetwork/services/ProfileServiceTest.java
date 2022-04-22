@@ -48,7 +48,6 @@ class ProfileServiceTest {
         String username = profile.getUsername();
         String email = profile.getEmail();
         List<Profile> profileCheck = new ArrayList<>();
-        profileCheck.add(profile);
         //methods to be used during act
         Mockito.when(profileDAO.createProfile(profile)).thenReturn(profileId);
         Mockito.when(profileDAO.getAll()).thenReturn(profileCheck);
