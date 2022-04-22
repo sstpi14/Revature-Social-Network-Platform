@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 h2/
+src/main/resources/log4j.properties
 
 ### NetBeans ###
 /nbproject/private/
