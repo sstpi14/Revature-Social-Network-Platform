@@ -34,11 +34,13 @@
 <div id="container">
     <div class="block" *ngFor="let display of displays" >
         <div class="name" [ngStyle]="{'background-image' : 'url( '+glit +')' }">{{display.profile.username}}</div>
-        <div class="body"><h4>{{display.description}} {{display.image}}</h4></div>
+        <div class="body"><h4>{{display.description}}</h4> 
+            <img src="{{display.img}}" alt="">
+        </div>
         
         <div class="like">{{display.likers.length}}</div>
         
-        <button class="like" (click)="like($event, display.displayId)" >Like</button>
+        <button class="like" (click)="like($event, display.displayId)" [innerText]="isUserInLikesArray(display.likers)"></button>
     </div>
    
 

@@ -75,8 +75,9 @@ export class OtheruserprofileComponent implements OnInit {
       this.apiServ.display = response.data;    
     });
    //call service
-    this.apiServ.addLikeOrDislike(displayId, this.apiServ.currentUser.profileId, this.apiServ.display).subscribe(response => {
-     // console.log(response);
+    this.apiServ.addLikeOrDislike(displayId, this.id, this.display).subscribe(response => {
+     this.display = response.data;
+     this.getAllDisplaysGivenProfileId();
     })
    // e.target.innerText = this.liked ? 'Dislike' : 'Like';
 

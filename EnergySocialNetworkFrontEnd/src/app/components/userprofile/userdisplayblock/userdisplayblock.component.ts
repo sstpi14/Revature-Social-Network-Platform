@@ -44,29 +44,25 @@ export class UserdisplayblockComponent implements OnInit {
     })
     this.getOneProfile();
     this.getAllDisplays();
-    this.getOneDisplay();
   }
 
   getOneProfile(){
     this.apiServ.getOneProfileByProfileId(this.id).subscribe((response: { data: any; }) => {
       this.profile = response.data;
-      console.log(this.profile);
     })
   }
 
 
   getAllDisplays(): void {
-    this.dispayServ.getAllDisplays().subscribe(responseBody =>{
-      this.displays = responseBody;
-      //this.profile = responseBody[0].profiles;
-      console.log(this.displays);
+    this.dispayServ.getAllDisplaysbyId(this.id).subscribe(responseBody =>{
+      console.log(responseBody)
+      this.displays = responseBody.data;
     })
   }
 
   getOneDisplay(): void{
     this.apiServ.getOneDisplay(this.id).subscribe(response =>{
-      this.profile = response.data.displayid;
-      console.log(this.profile);
+      this.profile = response.data.displayId;
     })
   }
 

@@ -43,9 +43,6 @@ export class UserprofileComponent implements OnInit {
     
     
     this.getAllDisplays();
-
-    console.log();
-    // this.getAllDisplaysGivenProfileId();
     this.getOneProfileByProfileId(); 
   }
   
