@@ -67,16 +67,26 @@ export class EdituserprofileComponent implements OnInit {
       email: this.email
     }
 
-    this.apiServ.updateProfile(this.profile).subscribe(response => { 
-      if(response.success == false){
-        this.updateMessageVariable = "Username or Email already taken."
-      } else {
-        this.goToUser(this.profile.username, this.profile.profileId);
+      var emailatfinder = this.profile.email.indexOf("@")
+      var emaildotfinder = this.profile.email.indexOf(".com")
+      if(this.profile.username === "" || this.profile.password === "" || this.profile.first_name === "" || this.profile.last_name === "" || this.profile.email === ""){
+        this.updateMessageVariable = "Fill in all fields"
+      }
+      else if(emailatfinder == -1 || emaildotfinder == -1){
+        this.updateMessageVariable = "Email must have @ and .com";
+      }
+      else{
+        this.apiServ.updateProfile(this.profile).subscribe(response => { 
+        if(response.success == false){
+          this.updateMessageVariable = "Username or Email already taken."
+        } else {
+          this.goToUser(this.profile.username, this.profile.profileId);
         //console.log(this.profile);
 
       }
     })
     }
+  }
 
     goToUser(name:any, proid:any){
     this.router.navigate(["/user"], { queryParams: { user: name, id: proid }});
