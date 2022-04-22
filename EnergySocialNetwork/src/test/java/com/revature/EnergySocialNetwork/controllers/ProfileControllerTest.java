@@ -127,6 +127,14 @@ class ProfileControllerTest {
 
     @Test
     void getAllProfile() {
+        //arrange
+        List<Profile> expectedOutput = new ArrayList<>();
+        expectedOutput.add(profile);
+        Mockito.when(profileService.getAll()).thenReturn(expectedOutput);
+        //act
+        List<Profile> actualOutput = profileController.getAllProfile();
+        //assert
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
