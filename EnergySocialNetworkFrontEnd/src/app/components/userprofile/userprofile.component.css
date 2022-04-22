@@ -67,6 +67,9 @@ img {
     border-radius: 4px;
     width: 280px;
 }
+<<<<<<< HEAD
+
+=======
 .profilepic{
     display: flex;
     flex-wrap: wrap;
@@ -79,3 +82,4 @@ img {
     border-radius: 5px;
     margin-right: 10px;
 }
+>>>>>>> d985f0eb1fdddcbeebf5de29baa25d7d01c2482a

@@ -20,17 +20,15 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static com.revature.EnergySocialNetwork.prototype.ProfilePrototype.aProfile;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class ProfileServiceTest {
     private ProfileService profileService;
 
-    @MockBean
-    private ProfileDAO profileDAO = Mockito.spy(ProfileDAO.class);
+    private ProfileDAO profileDAO = Mockito.mock(ProfileDAO.class);
 
     public ProfileServiceTest(){
         this.profileService = new ProfileService(profileDAO);

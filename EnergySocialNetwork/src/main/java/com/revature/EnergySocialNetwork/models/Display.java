@@ -52,4 +52,6 @@ public class Display {
         this.profile = profile;
         this.description = description;
     }
+
+
 }
