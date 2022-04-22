@@ -18,6 +18,8 @@ export class UserprofileComponent implements OnInit {
   id!: number;
   user!: string;
   profileId!: number;
+  file!:any;
+  isEditPicture: boolean = false;
 
  
 
@@ -42,9 +44,6 @@ export class UserprofileComponent implements OnInit {
     
     
     this.getAllDisplays();
-
-    console.log();
-    // this.getAllDisplaysGivenProfileId();
     this.getOneProfileByProfileId(); 
   }
   
@@ -86,6 +85,23 @@ export class UserprofileComponent implements OnInit {
   goToUserHome(){
     this.router.navigate(["/home"], { queryParams: { id: this.id }});
     //console.log(this.id);
+  }
+  getFile(event:any){
+    this.file = event.target.files[0];
+  }
+  submitProfilePicture(){
+    let formData = new FormData();
+    formData.append('file', this.file);
+    this.apiServ.uploadProfilePic(formData, this.id).subscribe(responseBody => {
+      this.getOneProfileByProfileId();
+    })
+  }
+  isDivVisible(){
+    if (this.isEditPicture == true) {
+      this.isEditPicture = false;
+    } else {
+      this.isEditPicture = true;
+    }
   }
 
 }

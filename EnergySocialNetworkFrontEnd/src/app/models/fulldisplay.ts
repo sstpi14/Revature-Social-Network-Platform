@@ -2,7 +2,7 @@ import { Profiled } from "./dprofile";
 
 export interface Full_Display{
     displayId: number;
-    image: {
+    img: {
         image: string;
     }
     profile: Profiled;
