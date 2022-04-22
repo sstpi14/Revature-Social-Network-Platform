@@ -18,6 +18,7 @@ export class UserdisplayblockComponent implements OnInit {
   isLiked:boolean = false;
   isVisable:boolean = false;
   id!: number;
+  file!: any;
 
   profile : any = {
     profileId: 0,
@@ -84,16 +85,21 @@ export class UserdisplayblockComponent implements OnInit {
     console.log(e.target.innerText);
   }
 
-  toggleLike(e:any){
+  toggleLike(e:any,displayId:number){
     e.target.like = !e.target.like;
-    if(e.target.like == true){
-      e.target.innerText = "Dislike";
-    }else{
-      e.target.innerText = "Like";
-    }
-    console.log(e.target.like);
-    //this.isLiked=!this.isLiked;
+    this.apiServ.addLikeOrDislike(displayId,this.id,this.display).subscribe(response=>{
+      this.getAllDisplays();
+    });
   }
+  isUserInLikesArray(likers : Array<any>){
+    for (let liker of likers) {
+      if(liker.profileId == this.id) {
+        return "Dislike"
+      }
+    }
+    return "Like"
+  }
+
 
   togglePost(){
     this.isVisable = !this.isVisable;
@@ -102,12 +108,19 @@ export class UserdisplayblockComponent implements OnInit {
 
   post(){
     this.display.description = this.post_desciption;
-    console.log(this.display);
     this.display.profile.profileId = this.id;
-    this.dispayServ.createDisplay(this.display).subscribe((response: { data: any; })=>{
+    this.dispayServ.createDisplay(this.display).subscribe(response=>{
+      let formData = new FormData();
+      formData.append('file', this.file);
+      this.apiServ.uploadDisplayImage(formData, this.id, response.data.displayId).subscribe(responseBody => {
+        this.getAllDisplays();
+      });
       this.post_desciption = "";
-      this.displays.push(response.data);
+      
     })
+  }
+  getFile(event:any){
+    this.file = event.target.files[0];
   }
 
 }
