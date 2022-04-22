@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginComponent implements OnInit {
 
-  bg : string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEmCFGtLDESaxWZHhnz0YV1BW_ph1KkV0B37vptRPlU9N6r_WCFMPu6mPSLXsAGgOGsM&usqp=CAU"; 
+  bg : string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wCJ6d54DywGZfq9vKQx9SIcjcRNRGMsHmw&usqp=CAU"; 
   username: string = "";
   password: string = "";
 
