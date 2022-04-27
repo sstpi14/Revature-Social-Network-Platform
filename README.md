@@ -4,10 +4,14 @@
 
 A web application created with our company and co-workers in mind.
 
-Brief Summary: 
+Brief Summary:
 
 In this web application every Revature employee can connect to other employees, whether it be an associate, a trainer, or contracted employees. Each person has their own account, that comes with a unique username, Revature employee information. Within this network employees can access llocations and information to help them with many different possibilities. Also it is being created to ease the transition as a revature employee, wether it be as a traine/associate, contracted employee/contractor, or staff member.
 
+ 
+
+Technologies used:
+=======
 ## Technologies used
 
 * Java
@@ -47,3 +51,11 @@ ENVIRONMENT VARIABLES TO SET: "[variable]" : [value]
 1. Start the application by running the main driver java file in the src folder.
 2. Set Environment Variables for your personal PostgreSQL database.
 3. Open your computer browser to localhost:4200/ to be able to view the webpage and start exploring our social media website!
+
+## Contributors 
+
+* Donneice Fontenot
+* Triston Sorenson
+* Matthew Spallas
+* Stephen St. Pierre 
+* James Yang
