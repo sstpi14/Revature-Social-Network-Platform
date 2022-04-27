@@ -33,8 +33,8 @@ Users Can:
 
 ## Getting Started
 
-Git Clone Command for cloning the full application:
-https://github.com/sstpi14/Employee-Remibursment-App
+Git Clone Command for cloning the full application
+* https://github.com/sstpi14/Employee-Remibursment-App
 
 ENVIRONMENT VARIABLES TO SET: "[variable]" : [value]
 
